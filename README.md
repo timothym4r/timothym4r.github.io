@@ -7,7 +7,7 @@ title: Home
 
 # Welcome to My GitHub Page
 
-Hello! I'm [Your Name], and this is my personal website where I share my projects, research, and more.
+I'm Timothy, and this is my personal website where I share my projects, research, and more.
 
 ## Projects
 
@@ -21,4 +21,4 @@ Hello! I'm [Your Name], and this is my personal website where I share my project
 
 ## About Me
 
-Write a brief introduction about yourself here. Include your interests, background, and any other relevant information.
+I'm a third-year undergraduate student at the University of Toronto, pursuing a Specialist in Data Science and a Major in Computer Science. My academic journey has fueled a deep passion for the field of Artificial Intelligence (AI), with particular interests in Natural Language Processing (NLP), Neural Networks, and Multimodal Learning.
