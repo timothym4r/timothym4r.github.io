@@ -18,8 +18,8 @@ body {
   }
 
   .intro-container {
-    display: flex;
-    justify-content: space-between; /* Ensures the text and image have space between them */
+    /* display: flex; */
+    justify-content: space-between; /*Ensures the text and image have space between them*/
   }
 
   .intro-content {
@@ -27,12 +27,44 @@ body {
     align-items: flex-start; /* Align items at the start (top) */
   }
   
-  .intro-text {
-    flex: 1; /* This makes the text take up most of the width */
-  }
   
   .profile-img {
-    width: 300px; /* Set the width of the image */
+    width: 250px; /* Set the width of the image */
     height: auto; /* Ensure it maintains its aspect ratio */
-    margin-left: 20px; /* Adds space between the text and the image */
+    margin-right: 20px; /* Adds space between the text and the image */
+    
   }
+
+a {
+    color: #167dea; /* Change link color */
+    text-decoration: none; /* Remove underline */
+    font-weight: bold; /* Make it bold */
+    transition: color 0.3s, text-shadow 0.3s; /* Smooth transition for effects */ 
+    }
+
+    a:hover {
+        color: #0056b3; /* Darker color on hover */
+        text-shadow: 0 0 5px rgba(0, 0, 0, 0.3); /* Add shadow effect on hover */
+      }
+
+      .intro-text p {
+        font-size: 25px; /* Change this value to increase or decrease the size */
+        line-height: 1.5; /* Optional: Adjust line height for readability */
+        color: #333; /* Optional: Change text color */
+        margin-bottom: 15px; /* Adds space below each paragraph */
+      }
+
+      .social-icons {
+        margin-top: 10px; /* Space above the icons */
+      }
+      
+      .social-icon {
+        width: 50px; /* Adjust size as needed */
+        margin-right: 15px; /* Space between icons */
+        color: #007bff; /* Icon color */
+        transition: color 0.3s; /* Transition for hover effect */
+      }
+      
+      .social-icon:hover {
+        color: #0056b3; /* Darker color on hover */
+      }
