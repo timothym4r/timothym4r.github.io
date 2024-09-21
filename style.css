@@ -19,8 +19,12 @@ body {
 
   .intro-container {
     display: flex;
-    align-items: center; /* Vertically align text with the image */
     justify-content: space-between; /* Ensures the text and image have space between them */
+  }
+
+  .intro-content {
+    display: flex; /* Use flexbox for the image and text */
+    align-items: flex-start; /* Align items at the start (top) */
   }
   
   .intro-text {
