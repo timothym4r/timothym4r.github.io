@@ -16,3 +16,19 @@ body {
     color: white;
     padding: 1em 0;
   }
+
+  .intro-container {
+    display: flex;
+    align-items: center; /* Vertically align text with the image */
+    justify-content: space-between; /* Ensures the text and image have space between them */
+  }
+  
+  .intro-text {
+    flex: 1; /* This makes the text take up most of the width */
+  }
+  
+  .profile-img {
+    width: 150px; /* Set the width of the image */
+    height: auto; /* Ensure it maintains its aspect ratio */
+    margin-left: 20px; /* Adds space between the text and the image */
+  }
