@@ -1,88 +1,317 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Timothy Pasaribu</title>
-  <!-- Link to Bootstrap CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-  <!-- Your custom CSS -->
-  <link rel="stylesheet" href="style.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Timothy Pasaribu — Personal Site</title>
+  <meta name="description" content="Personal website of Timothy Pasaribu — machine learning, nlp, and others." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#0b0c10; /* dark base */
+      --bg-soft:#111217;
+      --text:#e8eaed;
+      --muted:#aeb4c0;
+      --primary:#8ab4f8;
+      --accent:#6ee7b7;
+      --card:#14161d;
+      --border: #1f2330;
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
+      --radius: 16px;
+      --maxw: 1100px;
+      --navh: 64px;
+    }
+
+    /* Light mode defaults */
+    @media (prefers-color-scheme: light) {
+      :root{
+        --bg:#f8fafc;
+        --bg-soft:#ffffff;
+        --text:#0f172a;
+        --muted:#475569;
+        --primary:#2563eb;
+        --accent:#059669;
+        --card:#ffffff;
+        --border:#e5e7eb;
+        --shadow: 0 10px 30px rgba(2,6,23,.08);
+      }
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0; font-family:Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      background:radial-gradient(1200px 600px at 80% -10%, rgba(138,180,248,.15), transparent 60%), var(--bg);
+      color:var(--text);
+      line-height:1.6;
+    }
+
+    a{color:inherit; text-decoration:none}
+    img{max-width:100%; display:block}
+
+    .container{max-width:var(--maxw); margin:0 auto; padding:0 20px}
+
+    .brand {
+      font-weight: 800;
+      letter-spacing: .3px;
+      margin-right: 32px; /* space between brand and nav links */
+    }
+    
+    /* Nav */
+    .nav{
+      position:sticky; top:0; z-index:50; height:var(--navh);
+      display:flex; align-items:center; transition: transform .35s ease, background .35s ease, box-shadow .35s ease;
+      backdrop-filter: saturate(150%) blur(6px);
+    }
+    .nav__inner{display:flex; align-items:center; justify-content:space-between; height:var(--navh)}
+    .brand{font-weight:800; letter-spacing:.3px}
+    .nav__links{display:flex; gap:20px; align-items:center}
+    .nav__link{padding:8px 12px; border-radius:10px; color:var(--muted)}
+    .nav__link:hover{color:var(--text); background:rgba(127,127,127,.08)}
+
+    .nav--hidden{transform: translateY(-100%)}
+    .nav--opaque{background:rgba(255,255,255,.82); box-shadow:var(--shadow);}
+    @media (prefers-color-scheme: dark){ .nav--opaque{background:rgba(11,12,16,.6)} }
+
+
+    /* Socials top-left */
+    .socials{position:fixed; left:16px; top:88px; display:flex; flex-direction:column; gap:10px; z-index:40}
+    .socials a{width:38px; height:38px; display:grid; place-items:center; border:1px solid var(--border); background:var(--card); border-radius:12px; box-shadow:var(--shadow)}
+    .socials a:hover{transform: translateY(-2px)}
+
+    /* Hero */
+    .hero{padding:64px 0 24px}
+    .hero__grid{display:grid; grid-template-columns: 1.1fr 1.4fr; gap:36px; align-items:center}
+
+    .card{background:var(--card); border:1px solid var(--border); border-radius:var(--radius); box-shadow:var(--shadow)}
+
+    .photo{aspect-ratio: 4/5; border-radius:var(--radius); overflow:hidden}
+    .photo img{width:100%; height:100%; object-fit:cover}
+
+    .intro{padding:28px 28px}
+    .eyebrow{font-size:.85rem; color:var(--muted); letter-spacing:.2em; text-transform:uppercase}
+    h1{font-size: clamp(28px, 4vw, 44px); line-height:1.2; margin:10px 0 14px}
+    .lead{max-width: 62ch; color:var(--muted); font-size: clamp(15px, 1.5vw, 18px)}
+
+    .actions{display:flex; gap:14px; margin-top:22px}
+    .btn{display:inline-flex; align-items:center; gap:10px; padding:12px 16px; border-radius:12px; border:1px solid var(--border); background:var(--bg-soft); font-weight:600}
+    .btn--primary{background:linear-gradient(135deg, var(--primary), var(--accent)); color:#000; border-color:transparent}
+    .btn:active{transform: translateY(1px)}
+
+    /* Sections */
+    section{padding:56px 0}
+    .section__title{font-size:clamp(18px, 2.2vw, 26px); margin:0 0 18px}
+    .section__desc{color:var(--muted); max-width:80ch; margin-bottom:24px}
+
+    .grid{display:grid; gap:16px}
+    .grid--3{grid-template-columns: repeat(3,1fr)}
+    .grid--2{grid-template-columns: repeat(2,1fr)}
+    @media (max-width: 980px){
+      .hero__grid{grid-template-columns: 1fr}
+      .socials{position:fixed; top:auto; bottom:16px; left:50%; transform:translateX(-50%); flex-direction:row}
+      .grid--3{grid-template-columns: 1fr}
+      .grid--2{grid-template-columns: 1fr}
+    }
+
+    .card__pad{padding:20px}
+    .tag{display:inline-block; padding:6px 10px; font-size:12px; border:1px solid var(--border); border-radius:999px; color:var(--muted)}
+    .muted{color:var(--muted)}
+
+    /* Footer */
+    footer{padding:36px 0 56px; color:var(--muted)}
+
+    /* Utilities */
+    .nowrap{white-space:nowrap}
+    .center{display:grid; place-items:center}
+  </style>
 </head>
 <body>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="#">Timothy Pasaribu</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ms-auto">
-          <li class="nav-item">
-            <a class="nav-link" href="#about">About</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#projects">Projects</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#contact">Contact</a>
-          </li>
-        </ul>
+  <!-- Social Icons -->
+  <div class="socials" aria-label="social links">
+    <a href="https://github.com/timothym4r" aria-label="GitHub" title="GitHub">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M12 2C6.48 2 2 6.58 2 12.26c0 4.51 2.87 8.33 6.84 9.68.5.1.68-.22.68-.49 0-.24-.01-.87-.01-1.71-2.78.62-3.37-1.37-3.37-1.37-.46-1.2-1.12-1.52-1.12-1.52-.91-.64.07-.63.07-.63 1 .07 1.52 1.06 1.52 1.06 .9 1.58 2.36 1.12 2.93 .85.09-.67.36-1.12.65-1.38-2.22-.26-4.56-1.13-4.56-5 0-1.11.39-2.02 1.03-2.73-.1-.25-.45-1.29.1-2.69 0 0 .84-.27 2.75 1.04a9.2 9.2 0 0 1 5 0c1.9-1.31 2.74-1.04 2.74-1.04 .55 1.4.2 2.44.1 2.69 .64.71 1.03 1.62 1.03 2.73 0 3.88-2.34 4.73-4.57 4.98 .37.33.69.97.69 1.96 0 1.41-.01 2.55-.01 2.9 0 .27.18.6.69.49A10.04 10.04 0 0 0 22 12.26C22 6.58 17.52 2 12 2Z" fill="currentColor"/></svg>
+    </a>
+    <a href="https://www.linkedin.com/in/timothy-pasaribu-0804aa211/" aria-label="LinkedIn" title="LinkedIn">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.05-1.86-3.05-1.86 0-2.14 1.45-2.14 2.95v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.86 3.37-1.86 3.6 0 4.27 2.37 4.27 5.46v6.29ZM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12ZM7.11 20.45H3.57V9h3.54v11.45Z" fill="currentColor"/></svg>
+    </a>
+    <a href="mailto:timothy.pasaribu@mail.utoronto.ca" aria-label="Email" title="Email">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2Zm0 4.23-8 5.02-8-5.02V6l8 4.99L20 6v2.23Z" fill="currentColor"/></svg>
+    </a>
+  </div>
+
+  <!-- Nav -->
+  <nav id="siteNav" class="nav">
+    <div class="container nav__inner">
+      <div class="brand">Timothy Pasaribu</div>
+      <div class="nav__links">
+        <a class="nav__link" href="#home">Home</a>
+        <a class="nav__link" href="#about">About</a>
+        <a class="nav__link" href="#projects">Projects</a>
+        <a class="nav__link" href="public/documents/cv.pdf" target="_blank" rel="noopener">CV</a>
+        <a class="nav__link" href="#interests">Interests</a>
+        <a class="nav__link" href="#contact">Contact</a>
       </div>
     </div>
   </nav>
 
-  <section id="about" class="container my-5">
-    
-    <h1>About Me</h1>
-    <div class="intro-content">
-        <img src="images/main_profile_pic.jpg" alt="Profile Picture" class="profile-img">
-        <div class="intro-text">
-            <p>I'm a third year data science and computer science student at the University of Toronto. Last Summer, I
-                did my internship at <a href="https://www.bni.co.id/id-id/">Bank Negara Indonesia</a> as Machine Learning Intern. 
-            </p>
-            <p>
-                I have a huge interest in AI and Computer Vision. I'm looking to Summer 2025 Internship opportunities in Data Science, Machine Learning, Computer Vision, or related fields. 
-            </p>
-
-            <div class="social-icons">
-                <a href="https://linkedin.com/in/timothy-pasaribu-0804aa211" target="_blank">
-                  <img src="images/linkedin.png" alt="LinkedIn" class="social-icon">
-                </a>
-                <a href="https://github.com/timothym4r" target="_blank">
-                  <img src="images/github-mark.png" alt="GitHub" class="social-icon">
-                </a>
-              </div>
+  <!-- Hero / Home -->
+  <header id="home" class="hero">
+    <div class="container">
+      <div class="hero__grid">
+        <div class="card photo center" aria-label="Profile image placeholder">
+          <img src="public/images/main_profile_pic.jpg" alt="Profile" />
         </div>
-    </div>
-    
-  </section>
-
-  <section id="projects" class="container my-5">
-    <h1>Projects</h1>
-    <div class="row">
-      <div class="col-md-4">
-        <div class="card">
-          <div class="card-body">
-            <h5 class="card-title">LLM-powered E-wallet</h5>
-            <p class="card-text">An e-wallet project integrating LLMs for transaction functionalities.</p>
-            <a href="https://github.com/your-repo/e-wallet" class="btn btn-primary">View on GitHub</a>
+        <div class="card intro">
+          <div class="eyebrow">Machine Learning • Computer Vision • NLP</div>
+          <h1>Hi, I’m Timothy — an aspiring <span class="nowrap">ML Engineer</span> focused on building practical AI systems.</h1>
+          <p class="lead">I enjoy turning ideas into end‑to‑end products: from data pipelines and model training to deployment. Recently, I’ve been exploring moral inference with BERT, character representation learning, and chess reasoning with LLMs.</p>
+          <div class="actions">
+            <a class="btn btn--primary" href="#projects">View My Work
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M5 12h12m0 0-4-4m4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+            <a class="btn" href="mailto:timothy.pasaribu@mail.utoronto.ca">Get in touch</a>
           </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- About -->
+  <section id="about">
+    <div class="container">
+      <h2 class="section__title">About</h2>
+      <p class="section__desc">Fourth‑year CS student at the University of Toronto. Comfortable with PyTorch and TensorFlow, and experienced with deploying models. I’ve worked on Indonesian ID recognition (CNN/YOLO), sentiment analysis, and an LLM‑powered e‑wallet demo. I’m currently a TA for STA130.</p>
+      <div class="grid grid--3">
+        <div class="card card__pad">
+          <div class="tag">Focus</div>
+          <h3>ML Engineering</h3>
+          <p class="muted">Training, evaluation, MLOps, and making models useful in real products.</p>
+        </div>
+        <div class="card card__pad">
+          <div class="tag">Recent</div>
+          <h3>Moral Inference</h3>
+          <p class="muted">BERT + auxiliary encoders, injection strategies, and interpretability with SHAP.</p>
+        </div>
+        <div class="card card__pad">
+          <div class="tag">Toolkit</div>
+          <h3>PyTorch • Docker • FastAPI</h3>
+          <p class="muted">Plus: sklearn, HuggingFace, MLflow, AWS/GCP, SQL.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <section id="contact" class="container my-5">
-    <h1>Contact</h1>
-    <p>You can reach me via email at <a href="mailto:email@example.com">email@example.com</a> or find me on <a href="https://linkedin.com/in/yourprofile">LinkedIn</a>.</p>
+  <!-- Projects -->
+  <section id="projects">
+    <div class="container">
+      <h2 class="section__title">Selected Projects</h2>
+      <p class="section__desc">A few things I’ve built or shipped recently.</p>
+      <div class="grid grid--2">
+        <article class="card">
+          <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1200&auto=format&fit=crop" alt="Project screenshot"/>
+          <div class="card__pad">
+            <h3>Character Moral Inference</h3>
+            <p class="muted">BERT with character embeddings injected to improve masked moral word prediction; evaluated with reconstruction and cross‑entropy losses.</p>
+            <a class="btn" href="#">Repo</a>
+          </div>
+        </article>
+        <article class="card">
+          <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=1200&auto=format&fit=crop" alt="Project screenshot"/>
+          <div class="card__pad">
+            <h3>LLM‑powered E‑Wallet Demo</h3>
+            <p class="muted">Prototype assistant for Indonesian SMEs with categorization, insights, and tax literacy modules.</p>
+            <a class="btn" href="#">Demo</a>
+          </div>
+        </article>
+      </div>
+    </div>
   </section>
 
-  <footer class="bg-dark text-white text-center py-3">
-    <p>&copy; 2024 Timothy Pasaribu</p>
+  <!-- Interests -->
+  <section id="interests">
+    <div class="container">
+      <h2 class="section__title">Interests Outside School</h2>
+      <p class="section__desc">Soccer, cinematography, and exploring data stories in music from the 2000s–2010s.</p>
+      <div class="grid grid--3">
+        <div class="card card__pad">
+          <h3>Soccer</h3>
+          <p class="muted">Pickup games, tactics, and analytics.
+          </p>
+        </div>
+        <div class="card card__pad">
+          <h3>Film</h3>
+          <p class="muted">Shots, color, and combining ML with video analysis.</p>
+        </div>
+        <div class="card card__pad">
+          <h3>Teaching</h3>
+          <p class="muted">I like making tough topics less scary — TA life.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact">
+    <div class="container">
+      <h2 class="section__title">Contact</h2>
+      <p class="section__desc">Want to collaborate or chat? Email <a href="mailto:timothy.pasaribu@mail.utoronto.ca">timothy.pasaribu@mail.utoronto.ca/a> or DM me on LinkedIn.</p>
+      <div class="card card__pad">
+        <p class="muted">Based in Toronto, Canada. Open to internships and part‑time roles in ML Engineering and Applied AI.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <div class="muted">© <span id="year"></span> Timothy Pasaribu — Built with plain HTML/CSS/JS. Hosted on GitHub Pages.</div>
+    </div>
   </footer>
 
-  <!-- Bootstrap JS -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // Smooth scrolling for in-page links
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+      a.addEventListener('click', e=>{
+        const href = a.getAttribute('href');
+        if(href.length>1){
+          e.preventDefault();
+          document.querySelector(href).scrollIntoView({behavior:'smooth', block:'start'});
+        }
+      })
+    });
+
+    // Nav hide-on-scroll-down, show-on-scroll-up with slight transparency
+    const nav = document.getElementById('siteNav');
+    let lastY = window.scrollY;
+    let ticking = false;
+
+    function onScroll(){
+      const y = window.scrollY;
+      const goingDown = y > lastY + 2;
+      const goingUp = y < lastY - 2;
+
+      if(goingDown && y > 40) nav.classList.add('nav--hidden');
+      if(goingUp){
+        nav.classList.remove('nav--hidden');
+        // make it slightly transparent when reappearing
+        nav.classList.add('nav--opaque');
+        clearTimeout(onScroll._t);
+        onScroll._t = setTimeout(()=> nav.classList.remove('nav--opaque'), 400);
+      }
+      lastY = y;
+      ticking = false;
+    }
+
+    window.addEventListener('scroll', () => {
+      if(!ticking){
+        window.requestAnimationFrame(onScroll);
+        ticking = true;
+      }
+    });
+
+    // Year in footer
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
