@@ -16,6 +16,7 @@
       --muted: #555;
       --link: #0a66c2;
       --border: #eaeaea;
+      --surface: #fafafa;
       --maxw: 800px;
       --navh: 56px;
     }
@@ -26,23 +27,32 @@
         --muted: #b0b0b0;
         --link: #8ab4f8;
         --border: #1c1c1c;
+        --surface: #121212;
       }
     }
     html, body { height: 100%; }
+    html { scroll-behavior: smooth; }
     body{
       margin:0;
       font-family: ui-sans-serif, -apple-system, Segoe UI, Roboto, Helvetica, Arial, Apple Color Emoji, Segoe UI Emoji;
       background: var(--bg);
       color: var(--text);
       line-height: 1.6;
+      text-rendering: optimizeLegibility;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
     }
-    a{ color: var(--link); text-decoration: none; }
+    a{ color: var(--link); text-decoration: none; text-underline-offset: 0.14em; }
     a:hover{ text-decoration: underline; }
 
     /* Top bar */
-    .nav{ position: sticky; top:0; z-index:10; background:var(--bg); border-bottom:1px solid var(--border); height: var(--navh); }
+    .nav{
+      position: sticky; top:0; z-index:10;
+      background: color-mix(in srgb, var(--bg) 92%, transparent);
+      backdrop-filter: blur(8px);
+      border-bottom:1px solid var(--border);
+      height: var(--navh);
+    }
     .nav__inner{ max-width: var(--maxw); margin: 0 auto; height: var(--navh); display:flex; align-items:center; justify-content:space-between; padding: 0 16px; }
     /* Brand lockup: signature + sans */
     .brand{
@@ -71,28 +81,19 @@
       .brand-sig, .brand-sans { color: #eaeaea; }
     }
 
-    .nav__links{ display:flex; gap:18px; }
-    .nav__link{ color: var(--muted); }
+    .nav__links{ display:flex; gap:18px; flex-wrap:wrap; }
+    .nav__link{ color: var(--muted); transition: color .16s ease; }
     .nav__link:hover{ color: var(--text); text-decoration:none; }
-
-    /* ---- Avatar placeholder above About ---- */
-    .avatar{
-      width:112px; height:112px; border-radius:50%;
-      margin:4px auto 14px; display:flex; align-items:center; justify-content:center;
-      border:1px solid var(--border); background:#f5f5f5; color:#6b7280;
-      font-weight:700; font-size:1.35rem; user-select:none;
-    }
-    .avatar img{width:100%; height:100%; object-fit:cover; border-radius:50%; display:block}
 
 
     /* Page */
     .wrap{ max-width: var(--maxw); margin: 0 auto; padding: 32px 16px 80px; }
-    header{ padding: 32px 0 8px; }
-    h1{ font-size: clamp(28px, 5vw, 40px); margin: 0 0 8px; font-weight: 700; }
-    .tagline{ color: var(--muted); font-size: 1.05rem; margin: 0 0 18px; }
+    header{ padding: 40px 0 14px; }
+    h1{ font-size: clamp(28px, 5vw, 40px); margin: 0 0 8px; font-weight: 700; letter-spacing: -0.03em; }
+    .tagline{ color: var(--muted); font-size: 1.05rem; margin: 0 0 18px; max-width: 40ch; }
 
     /* Sections */
-    section{ padding: 18px 0; border-top: 1px solid var(--border); }
+    section{ padding: 22px 0; border-top: 1px solid var(--border); scroll-margin-top: calc(var(--navh) + 20px); }
     section:first-of-type{ border-top: none; }
     h2{ font-size: 1rem; font-weight: 600; text-transform: uppercase; letter-spacing: .12em; color: var(--muted); margin: 0 0 8px; }
     p{ margin: 10px 0; }
@@ -101,12 +102,22 @@
     .muted{ color: var(--muted); }
     .row{ display:flex; gap:12px; flex-wrap:wrap; align-items:center; }
     .spacer{ height: 24px; }
+    .lead{ max-width: 62ch; color: color-mix(in srgb, var(--text) 94%, var(--muted)); }
+    .clean{ list-style:none; margin: 14px 0 0; }
+    .clean li{
+      margin: 0 0 14px;
+      padding: 0 0 0 14px;
+      border-left: 2px solid var(--border);
+    }
+    .clean li:last-child{ margin-bottom: 0; }
+    .clean strong a{ color: inherit; }
+    .clean strong a:hover{ color: var(--link); }
 
     /* About layout: text | photo */
     .about__grid{
       display: grid;
       grid-template-columns: 1fr 220px; /* left text, right photo */
-      gap: 24px;
+      gap: 28px;
       align-items: start;
     }
     @media (max-width: 640px){
@@ -120,7 +131,8 @@
       border-radius: 12px;
       overflow: hidden;
       border: 1px solid var(--border);
-      background: #f5f5f5;
+      background: var(--surface);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.05);
     }
     .about__photo img{
       width: 100%;
@@ -141,7 +153,7 @@
       border-radius: 12px;
       overflow: hidden;
       border: 1px solid var(--border);
-      background: #f5f5f5;
+      background: var(--surface);
       margin: 0;                    /* no centering */
     }
     .avatar img{
@@ -162,7 +174,7 @@
 
     /* Contact icons */
     .socials { 
-      display:flex; gap:12px; list-style:none; padding:0; margin:8px 0;
+      display:flex; gap:12px; list-style:none; padding:0; margin:16px 0 0; flex-wrap:wrap;
     }
     .socials .social {
       --size: 40px;               /* tweak size here */
@@ -170,15 +182,33 @@
       display: inline-grid; place-items: center;
       border: 1px solid var(--border);
       border-radius: 10px;
-      background: #f7f7f7;
+      background: var(--surface);
       color: #111;                /* SVGs use currentColor */
       text-decoration: none;
-      transition: transform .12s ease, background .2s ease, border-color .2s ease;
+      transition: transform .12s ease, background .2s ease, border-color .2s ease, box-shadow .2s ease;
     }
-    .socials .social:hover { transform: translateY(-1px); background:#f1f1f1; }
+    .socials .social:hover {
+      transform: translateY(-1px);
+      background: color-mix(in srgb, var(--surface) 78%, var(--bg));
+      box-shadow: 0 8px 18px rgba(0,0,0,0.06);
+    }
     @media (prefers-color-scheme: dark){
       .socials .social{ background:#141414; color:#eaeaea; border-color:#232323; }
       .socials .social:hover{ background:#1a1a1a; }
+    }
+
+    @media (max-width: 640px){
+      .nav{ height: auto; }
+      .nav__inner{
+        height: auto;
+        padding-top: 12px;
+        padding-bottom: 12px;
+        align-items: flex-start;
+        gap: 10px;
+        flex-direction: column;
+      }
+      .nav__links{ gap: 14px; }
+      .wrap{ padding-top: 24px; }
     }
 
     
@@ -216,11 +246,11 @@
     <div class="about__text">
       <h2 id="about-title" >About</h2>
       <p class="lead">
-        I'm a fourth-year Data Science Student and NLP Research Assistant at UofT. 
-        <p>
-        <p class="lead">
-        I enjoy building machine learning systems end to end; from data preparation and model training to deployment.
-        Lately, I've been working on computational moral inference and character representation learning under supervision of Aida Ramezani and Prof. Yang Xu.
+        I'm a fourth-year Data Science student and NLP Research Assistant at UofT.
+      </p>
+      <p class="lead">
+        I enjoy building machine learning systems end to end, from data preparation and model training to deployment.
+        Lately, I've been working on computational moral inference and character representation learning under supervision of <a href="https://aidaramezani.github.io/" target="_blank" rel="noopener">Aida Ramezani</a> and <a href="https://www.cs.utoronto.ca/~yangxu/" target="_blank" rel="noopener">Prof. Yang Xu</a>.
       </p>
       <p class="lead">
         I was a teaching assistant for STA130 in Fall 2024 term and will be returning in Fall 2025.
@@ -281,7 +311,7 @@
   <section id="experience">
     <h2 class="section-title">Experience</h2>
     <ul class="clean">
-      <li><strong>Research Assistant — Moral Inference Project, University of Toronto</strong> · Working with computational methods on moral inference and character representations under Aida Ramezani & Prof. Yang Xu; exploring LLM representation and careful evaluation.</li>
+      <li><strong>Research Assistant — Moral Inference Project, University of Toronto</strong> · Working with computational methods on moral inference and character representations under <a href="https://aidaramezani.github.io/" target="_blank" rel="noopener">Aida Ramezani</a> &amp; <a href="https://www.cs.utoronto.ca/~yangxu/" target="_blank" rel="noopener">Prof. Yang Xu</a>; exploring LLM representation and careful evaluation.</li>
       <li><strong>Teaching Assistant — STA130 (Data Science & Statistical Reasoning), UofT</strong> · Led tutorials (~24 students) and office hours; TA in Fall 2024 and returning in Fall 2025.</li>
       <li><strong>Machine Learning Intern — Bank Negara Indonesia (BNI)</strong> · Indonesian ID classification, sentiment analysis, and transaction categorization using LLMs; experience taking models from training toward deployment.</li>
       <li><strong>Social Good Team — Students in Data Science & Statistics @ UofT</strong> · Building a model to help predict student performance and support academic planning.</li>
@@ -291,11 +321,11 @@
   <section id="projects">
     <h2 class="section-title">Projects</h2>
     <ul class="clean">
-      <li><strong>Indonesian ID Recognition (CNN)</strong> · Detects and classifies KTP IDs to harden OCR against spoofs; experimented with ESRGAN/EDSR for image enhancement.</li>
-      <li><strong>Macroecon × Governance Analysis</strong> · World Bank data; panel regression on FDI→GDP growth with interactions (political stability & corruption); planned ML baselines (e.g., XGBoost) and SHAP diagnostics.</li>
-      <li><strong>ScriptSense: LLM-Powered Narrative Intelligence Platform</strong> · Built a RAG pipeline with chunked ingestion, vector indexing, and LLM summarization to support semantic search and exploratory analysis across 500+ movie scripts; also engineered dialogue and action extraction from noisy PDFs into analysis-ready datasets.</li>
+      <li><strong><a href="https://github.com/timothym4r/ScriptSense" target="_blank" rel="noopener">ScriptSense: LLM-Powered Narrative Intelligence Platform</a></strong> · Built a RAG pipeline with chunked ingestion, vector indexing, and LLM summarization to support semantic search and exploratory analysis across 500+ movie scripts; also engineered dialogue and action extraction from noisy PDFs into analysis-ready datasets.</li>
       <li><strong>MindMap: Research Knowledge Graph Platform</strong> · Modeled citation networks and semantic relationships across 10,000+ papers using graph construction and embedding-based clustering, then built an LLM-powered query interface to make large academic corpora interactively explorable.</li>
-      <li><strong>FinRAG: Financial Retrieval-Augmented QA System</strong> · Built a retrieval-augmented QA system over 10-K filings and earnings reports for investment research, improving retrieval precision by 20%+ with domain-specific chunking and re-ranking for long-form financial documents.</li>
+      <li><strong><a href="https://github.com/timothym4r/FinRAG" target="_blank" rel="noopener">FinRAG: Financial Retrieval-Augmented QA System</a></strong> · Built a retrieval-augmented QA system over 10-K filings and earnings reports for investment research, improving retrieval precision by 20%+ with domain-specific chunking and re-ranking for long-form financial documents.</li>
+      <li><strong><a href="https://github.com/timothym4r/Indonesian-ID-Recognition" target="_blank" rel="noopener">Indonesian ID Recognition (CNN)</a></strong> · Detects and classifies KTP IDs to harden OCR against spoofs; experimented with ESRGAN/EDSR for image enhancement.</li>
+      <li><strong><a href="https://github.com/timothym4r/Politics-and-Corruption-on-FDI-GDP-relation" target="_blank" rel="noopener">Macroecon × Governance Analysis</a></strong> · World Bank data; panel regression on FDI→GDP growth with interactions (political stability & corruption); planned ML baselines (e.g., XGBoost) and SHAP diagnostics.</li>
     </ul>
   </section>
 
