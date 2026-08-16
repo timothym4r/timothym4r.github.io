@@ -3,339 +3,102 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Timothy Pasaribu</title>
-  <meta name="description" content="Timothy Pasaribu — fourth‑year CS at UofT. Applied ML and moral inference with BERT." />
+  <title>Timothy Pasaribu - AI, Data, Software</title>
+  <meta name="description" content="Timothy Pasaribu builds intelligent systems across AI, data science, machine learning, NLP, analytics, and software engineering." />
+  <meta property="og:title" content="Timothy Pasaribu - AI, Data, Software" />
+  <meta property="og:description" content="Applied AI, data science, NLP research, and software engineering portfolio." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="public/images/main_profile_pic.jpg" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Inter:wght@600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;500;600;700;800&amp;family=Caveat:wght@600;700&amp;family=Fraunces:opsz,wght,SOFT@9..144,500..800,35..100&amp;family=JetBrains+Mono:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
   <style>
-    /* -------- Minimal, type‑first layout (no frameworks) -------- */
-    :root{
-      --bg: #ffffff;
-      --text: #111111;
-      --muted: #555;
-      --link: #0a66c2;
-      --border: #eaeaea;
-      --surface: #fafafa;
-      --maxw: 800px;
-      --navh: 56px;
-    }
-    @media (prefers-color-scheme: dark) {
-      :root{
-        --bg: #0b0b0b;
-        --text: #eeeeee;
-        --muted: #b0b0b0;
-        --link: #8ab4f8;
-        --border: #1c1c1c;
-        --surface: #121212;
-      }
-    }
-    html, body { height: 100%; }
-    html { scroll-behavior: smooth; }
-    body{
-      margin:0;
-      font-family: ui-sans-serif, -apple-system, Segoe UI, Roboto, Helvetica, Arial, Apple Color Emoji, Segoe UI Emoji;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.6;
-      text-rendering: optimizeLegibility;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-    }
-    a{ color: var(--link); text-decoration: none; text-underline-offset: 0.14em; }
-    a:hover{ text-decoration: underline; }
-
-    /* Top bar */
-    .nav{
-      position: sticky; top:0; z-index:10;
-      background: color-mix(in srgb, var(--bg) 92%, transparent);
-      backdrop-filter: blur(8px);
-      border-bottom:1px solid var(--border);
-      height: var(--navh);
-    }
-    .nav__inner{ max-width: var(--maxw); margin: 0 auto; height: var(--navh); display:flex; align-items:center; justify-content:space-between; padding: 0 16px; }
-    /* Brand lockup: signature + sans */
-    .brand{
-      display:flex; align-items:baseline; gap:8px;
-      margin-right: clamp(16px, 2.5vw, 28px); /* breathing room before menu */
-    }
-
-    .brand-sig{
-      font-family: "Caveat", ui-serif, Georgia, serif; /* or "Caveat", "Sacramento" */
-      font-size: 1.25rem;          /* tweak size to taste */
-      line-height: 1;
-      letter-spacing: 0.2px;       /* Caveat: try 0; Sacramento: try -0.2px */
-      font-weight: 400;            /* Caveat uses 700; others are single-weight */
-      transform: translateY(1px);  /* gentle baseline nudge so it aligns with sans */
-    }
-
-    .brand-sans{
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-      font-weight: 600;
-      letter-spacing: 0.2px;
-      font-size: 0.98rem;
-    }
-
-    /* Optional: dark mode keeps it crisp */
-    @media (prefers-color-scheme: dark){
-      .brand-sig, .brand-sans { color: #eaeaea; }
-    }
-
-    .nav__links{ display:flex; gap:18px; flex-wrap:wrap; }
-    .nav__link{ color: var(--muted); transition: color .16s ease; }
-    .nav__link:hover{ color: var(--text); text-decoration:none; }
-
-
-    /* Page */
-    .wrap{ max-width: var(--maxw); margin: 0 auto; padding: 32px 16px 80px; }
-    header{ padding: 40px 0 14px; }
-    h1{ font-size: clamp(28px, 5vw, 40px); margin: 0 0 8px; font-weight: 700; letter-spacing: -0.03em; }
-    .tagline{ color: var(--muted); font-size: 1.05rem; margin: 0 0 18px; max-width: 40ch; }
-
-    /* Sections */
-    section{ padding: 22px 0; border-top: 1px solid var(--border); scroll-margin-top: calc(var(--navh) + 20px); }
-    section:first-of-type{ border-top: none; }
-    h2{ font-size: 1rem; font-weight: 600; text-transform: uppercase; letter-spacing: .12em; color: var(--muted); margin: 0 0 8px; }
-    p{ margin: 10px 0; }
-    ul{ margin: 8px 0 0 18px; padding:0; }
-
-    .muted{ color: var(--muted); }
-    .row{ display:flex; gap:12px; flex-wrap:wrap; align-items:center; }
-    .spacer{ height: 24px; }
-    .lead{ max-width: 62ch; color: color-mix(in srgb, var(--text) 94%, var(--muted)); }
-    .clean{ list-style:none; margin: 14px 0 0; }
-    .clean li{
-      margin: 0 0 14px;
-      padding: 0 0 0 14px;
-      border-left: 2px solid var(--border);
-    }
-    .clean li:last-child{ margin-bottom: 0; }
-    .clean strong a{ color: inherit; }
-    .clean strong a:hover{ color: var(--link); }
-
-    /* About layout: text | photo */
-    .about__grid{
-      display: grid;
-      grid-template-columns: 1fr 220px; /* left text, right photo */
-      gap: 28px;
-      align-items: start;
-    }
-    @media (max-width: 640px){
-      .about__grid{ grid-template-columns: 1fr; }
-    }
-
-    /* Photo card (no circle) */
-    .about__photo{
-      width: 100%;
-      aspect-ratio: 4 / 5;
-      border-radius: 12px;
-      overflow: hidden;
-      border: 1px solid var(--border);
-      background: var(--surface);
-      box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-    }
-    .about__photo img{
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-      border-radius: 0;           /* force: no circle */
-      clip-path: none;            /* just in case */
-      -webkit-mask-image: none;   /* just in case */
-    }
-
-
-    /* Portrait (rectangular, soft corners, left-aligned) */
-    .avatar{
-      width: 100%;
-      height: auto;
-      aspect-ratio: 4 / 5;          /* nice portrait ratio */
-      border-radius: 12px;
-      overflow: hidden;
-      border: 1px solid var(--border);
-      background: var(--surface);
-      margin: 0;                    /* no centering */
-    }
-    .avatar img{
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
-
-    .section-title{
-      font-size: 1rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: .12em;
-      color: var(--muted);
-      margin: 0 0 8px;
-    }
-
-    /* Contact icons */
-    .socials { 
-      display:flex; gap:12px; list-style:none; padding:0; margin:16px 0 0; flex-wrap:wrap;
-    }
-    .socials .social {
-      --size: 40px;               /* tweak size here */
-      width: var(--size); height: var(--size);
-      display: inline-grid; place-items: center;
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      background: var(--surface);
-      color: #111;                /* SVGs use currentColor */
-      text-decoration: none;
-      transition: transform .12s ease, background .2s ease, border-color .2s ease, box-shadow .2s ease;
-    }
-    .socials .social:hover {
-      transform: translateY(-1px);
-      background: color-mix(in srgb, var(--surface) 78%, var(--bg));
-      box-shadow: 0 8px 18px rgba(0,0,0,0.06);
-    }
-    @media (prefers-color-scheme: dark){
-      .socials .social{ background:#141414; color:#eaeaea; border-color:#232323; }
-      .socials .social:hover{ background:#1a1a1a; }
-    }
-
-    @media (max-width: 640px){
-      .nav{ height: auto; }
-      .nav__inner{
-        height: auto;
-        padding-top: 12px;
-        padding-bottom: 12px;
-        align-items: flex-start;
-        gap: 10px;
-        flex-direction: column;
-      }
-      .nav__links{ gap: 14px; }
-      .wrap{ padding-top: 24px; }
-    }
-
-    
-
-    /* Footer */
-    footer{ border-top:1px solid var(--border); margin-top: 28px; padding-top: 16px; color: var(--muted); font-size: .95rem; }
+    :root{--text:#101419;--muted:#4f5a62;--soft:#75818a;--line:rgba(16,20,25,.16);--panel:rgba(255,255,255,.72);--cyan:#007e8d;--green:#447a18;--coral:#cc3f2d;--amber:#9b6509;--max:1060px;--navh:72px;color-scheme:light}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;color:var(--text);font-family:"Bricolage Grotesque",ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.58;background:radial-gradient(circle at 18% 12%,rgba(83,227,239,.22),transparent 32rem),radial-gradient(circle at 84% 8%,rgba(255,122,100,.18),transparent 30rem),linear-gradient(145deg,#fffdf8 0%,#f3efe6 48%,#e7f0ef 100%);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+    body:before{content:"";position:fixed;inset:0;z-index:-3;pointer-events:none;background-image:linear-gradient(rgba(16,20,25,.075) 1px,transparent 1px),linear-gradient(90deg,rgba(16,20,25,.075) 1px,transparent 1px);background-size:64px 64px;mask-image:linear-gradient(to bottom,rgba(0,0,0,.68),rgba(0,0,0,.1))}
+    a{color:inherit;text-decoration:none}.nav{position:sticky;top:0;z-index:20;height:var(--navh);border-bottom:1px solid var(--line);background:rgba(255,253,248,.78);backdrop-filter:blur(18px)}.nav__inner{width:min(var(--max),calc(100% - 40px));height:100%;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:24px}.brand{display:inline-flex;align-items:baseline;gap:6px;white-space:nowrap}.brand__sig{font-family:Caveat,ui-serif,Georgia,serif;font-size:1.48rem;font-weight:700;line-height:1}.nav__links{display:flex;align-items:center;gap:clamp(14px,2vw,28px);color:var(--muted);font-family:"JetBrains Mono",monospace;font-size:.72rem;letter-spacing:.03em;text-transform:uppercase}.nav__links a{transition:color .18s ease,transform .18s ease}.nav__links a:hover{color:var(--text);transform:translateY(-1px)}
+    .hero{position:relative;min-height:calc(92vh - var(--navh));width:100%;margin:0 auto;display:grid;grid-template-columns:minmax(0,.92fr) minmax(330px,.58fr);align-items:center;gap:clamp(28px,4vw,56px);padding:clamp(46px,6vw,74px) max(20px,calc((100% - 1060px)/2)) clamp(34px,5vw,58px);overflow:hidden}.hero:before{content:"";position:absolute;inset:0;z-index:-2;border-top:1px solid rgba(16,20,25,.09);border-bottom:1px solid rgba(16,20,25,.09);background:linear-gradient(110deg,rgba(255,253,248,.72),rgba(255,253,248,.24)),radial-gradient(circle at 78% 28%,rgba(255,122,100,.13),transparent 24rem);mask-image:linear-gradient(to bottom,#000 0%,#000 78%,transparent 100%)}#field{position:absolute;inset:0;z-index:-1;width:100%;height:100%;opacity:.45;pointer-events:none;mask-image:linear-gradient(to bottom,#000 0%,#000 76%,transparent 100%)}
+    .eyebrow{display:flex;align-items:center;gap:10px;margin:0 0 22px;color:var(--green);font-family:"JetBrains Mono",monospace;font-size:.72rem;font-weight:700;text-transform:uppercase}.eyebrow:before{content:"";width:42px;height:1px;background:linear-gradient(90deg,var(--green),transparent)}h1,h2,h3,p{margin-top:0}h1{display:grid;max-width:9.8ch;margin-bottom:20px;font-family:Fraunces,Georgia,serif;font-size:clamp(3.05rem,7.2vw,6.25rem);font-variation-settings:"SOFT" 80,"opsz" 96;font-weight:760;line-height:.94}h2{margin-bottom:0;font-family:Fraunces,Georgia,serif;font-size:clamp(2.05rem,4.4vw,4.25rem);font-variation-settings:"SOFT" 72,"opsz" 96;font-weight:720;line-height:1.02}.hero__copy{max-width:580px;color:#26313a;font-size:clamp(1rem,1.45vw,1.17rem);line-height:1.62}.hero__copy strong,.about strong,.experience-node strong{color:var(--text)}
+    .hero__visual{display:grid;justify-items:center;padding:clamp(10px,2vw,18px);border:1px solid rgba(16,20,25,.12);border-radius:8px;background:linear-gradient(160deg,rgba(255,255,255,.74),rgba(255,255,255,.28)),radial-gradient(circle at 15% 20%,rgba(83,227,239,.18),transparent 16rem)}.portrait{width:min(100%,390px);margin:0;aspect-ratio:3/4;border:1px solid rgba(16,20,25,.18);border-radius:8px;overflow:hidden;background:rgba(255,253,248,.58)}.portrait img{width:100%;height:100%;display:block;object-fit:contain;filter:saturate(.92) contrast(1.08)}
+    .hero__actions,.contact__actions,.social-icons{display:flex;flex-wrap:wrap;align-items:center;gap:12px;margin-top:26px}.social-icons{margin-top:18px}.button,.icon-link{min-height:44px;border:1px solid rgba(16,20,25,.18);border-radius:8px;background:rgba(255,255,255,.58);color:var(--text);transition:transform .18s ease,border-color .18s ease,background .18s ease}.button{display:inline-flex;align-items:center;justify-content:center;padding:0 18px;font-family:"JetBrains Mono",monospace;font-size:.76rem;font-weight:700}.button--primary{background:var(--text);color:#fffdf8;border-color:var(--text)}.button:hover,.icon-link:hover{transform:translateY(-2px);border-color:rgba(0,126,141,.5);background:rgba(83,227,239,.18)}.button--primary:hover{background:var(--cyan);border-color:var(--cyan)}.icon-link{width:44px;height:44px;display:inline-grid;place-items:center}.icon-link svg{width:20px;height:20px}
+    .section{width:min(var(--max),calc(100% - 40px));margin:0 auto;padding:clamp(52px,7vw,88px) 0;scroll-margin-top:calc(var(--navh) + 28px)}.section__head{display:grid;grid-template-columns:minmax(0,.68fr) minmax(280px,.32fr);gap:clamp(28px,6vw,72px);align-items:end;margin-bottom:clamp(34px,6vw,64px)}.section__head--simple{grid-template-columns:1fr;margin-bottom:clamp(24px,4vw,36px)}.section__note{margin-bottom:0;color:var(--muted);font-size:.98rem;line-height:1.62}
+    .about{display:grid;grid-template-columns:minmax(0,.74fr) minmax(260px,.46fr);gap:clamp(30px,6vw,72px);align-items:start}.about p,.now p{color:var(--muted);font-size:1rem;line-height:1.68}.stack,.focus-list{display:grid;gap:14px;margin:0;padding:0;list-style:none}.stack li,.focus-list li{padding:18px;border:1px solid var(--line);border-radius:8px;background:rgba(255,255,255,.52);color:var(--muted)}.stack strong{display:block;margin-bottom:6px;color:var(--text)}.stack span{font-size:.96rem;line-height:1.58}
+    .experience-graph__list{position:relative;display:grid;gap:0;margin:0;padding:0;list-style:none}.experience-graph__list:before{content:"";position:absolute;top:18px;bottom:18px;left:118px;width:1px;background:linear-gradient(var(--cyan),rgba(16,20,25,.16),var(--coral))}.experience-node{position:relative;display:grid;grid-template-columns:92px 1fr;gap:52px;padding:0 0 28px}.experience-node:last-child{padding-bottom:0}.experience-node:before{content:"";position:absolute;top:10px;left:110px;width:17px;height:17px;border:2px solid var(--cyan);border-radius:50%;background:#fffdf8;box-shadow:0 0 0 7px rgba(83,227,239,.12)}.experience-node__date{padding-top:8px;color:var(--amber);font-family:"JetBrains Mono",monospace;font-size:.72rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase}.experience-node__body{padding:18px 22px;border:1px solid rgba(16,20,25,.14);border-radius:8px;background:linear-gradient(135deg,rgba(255,255,255,.72),rgba(255,255,255,.42)),radial-gradient(circle at 100% 0%,rgba(83,227,239,.14),transparent 14rem)}.experience-node h3,.project h3{margin-bottom:8px;font-family:Fraunces,Georgia,serif;font-variation-settings:"SOFT" 65,"opsz" 48;font-weight:700;line-height:1.06}.experience-node h3{font-size:clamp(1.18rem,1.7vw,1.45rem)}.experience-node p{margin-bottom:0;color:var(--muted);font-size:.97rem;line-height:1.6}
+    .section-transition{width:min(var(--max),calc(100% - 40px));height:86px;margin:0 auto;border-top:1px solid rgba(16,20,25,.12);border-bottom:1px solid rgba(16,20,25,.12);background:linear-gradient(90deg,rgba(0,126,141,.18),transparent 36%,rgba(255,122,100,.12)),repeating-linear-gradient(90deg,rgba(16,20,25,.1) 0 1px,transparent 1px 42px);mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent)}
+    .work{display:grid;gap:18px}.project{display:grid;grid-template-columns:minmax(230px,.82fr) minmax(0,1fr);gap:clamp(18px,3vw,34px);padding:clamp(20px,3.2vw,34px);border:1px solid var(--line);border-radius:8px;background:var(--panel);overflow:hidden}.project__index{color:var(--soft);font-family:"JetBrains Mono",monospace;font-size:.72rem;letter-spacing:.04em;font-weight:700}.project h3{margin-top:18px;font-size:clamp(1.42rem,2.6vw,2.45rem)}.project__summary{color:#26313a;font-size:1rem;line-height:1.58}.project__figure{min-height:150px;margin-top:18px;border:1px solid rgba(16,20,25,.12);border-radius:8px;background:linear-gradient(135deg,rgba(83,227,239,.14),rgba(255,255,255,.45) 48%,rgba(255,122,100,.13)),repeating-linear-gradient(0deg,rgba(16,20,25,.08) 0 1px,transparent 1px 18px);display:grid;place-items:end start;padding:14px;color:var(--muted);font-family:"JetBrains Mono",monospace;font-size:.68rem;line-height:1.35}.project__figure span{display:inline-block;padding:7px 9px;border-radius:8px;background:rgba(255,253,248,.68);border:1px solid rgba(16,20,25,.1)}.project__meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}.pill{display:inline-flex;align-items:center;min-height:28px;padding:0 10px;border:1px solid rgba(16,20,25,.15);border-radius:999px;color:var(--muted);font-family:"JetBrains Mono",monospace;font-size:.68rem;background:rgba(255,255,255,.52)}.project__details{display:grid;gap:16px;align-content:center}.detail{display:grid;grid-template-columns:110px 1fr;gap:18px;padding-top:16px;border-top:1px solid rgba(16,20,25,.11)}.detail dt{color:var(--soft);font-family:"JetBrains Mono",monospace;font-size:.68rem;letter-spacing:.05em;font-weight:700;text-transform:uppercase}.detail dd{margin:0;color:var(--muted);font-size:.96rem;line-height:1.58}.project__link{justify-self:start;color:var(--cyan);font-family:"JetBrains Mono",monospace;font-size:.76rem;font-weight:700}
+    .now{display:grid;grid-template-columns:minmax(0,.86fr) minmax(300px,.5fr);gap:clamp(20px,4vw,44px);align-items:stretch}.now__panel{border:1px solid var(--line);border-radius:8px;background:rgba(255,255,255,.78);padding:clamp(26px,4vw,42px)}.focus-list li{display:grid;grid-template-columns:38px 1fr;gap:12px}.focus-list span{display:grid;place-items:center;width:38px;height:38px;border-radius:8px;background:rgba(83,227,239,.16);color:var(--cyan);font-family:"JetBrains Mono",monospace;font-weight:800}
+    .contact{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:linear-gradient(90deg,rgba(83,227,239,.1),transparent 42%)}.contact .section{padding-top:clamp(58px,8vw,92px);padding-bottom:clamp(58px,8vw,92px)}.contact__inner{display:grid;grid-template-columns:minmax(0,.9fr) minmax(270px,.36fr);gap:clamp(28px,6vw,72px);align-items:center}.contact p{color:var(--muted);font-size:1rem;line-height:1.64}footer{width:min(var(--max),calc(100% - 40px));margin:0 auto;padding:28px 0 42px;color:var(--soft);font-family:"JetBrains Mono",monospace;font-size:.72rem}
+    .page-wipe{position:fixed;inset:0;z-index:50;pointer-events:none;background:linear-gradient(110deg,rgba(83,227,239,0),rgba(83,227,239,.24),rgba(255,122,100,0));opacity:0;transform:translateX(-100%)}.page-wipe.is-active{animation:wipe 620ms ease both}@keyframes wipe{0%{opacity:0;transform:translateX(-100%)}35%{opacity:1}100%{opacity:0;transform:translateX(100%)}}.reveal{opacity:0;transform:translateY(20px);transition:opacity .7s ease,transform .7s ease}.reveal.is-visible{opacity:1;transform:translateY(0)}
+    @media(max-width:940px){.hero,.project,.now,.about,.contact__inner,.section__head{grid-template-columns:1fr}.hero{min-height:auto}.hero__visual{order:-1}h1{max-width:100%}}@media(max-width:720px){:root{--navh:auto}.nav{position:relative;height:auto}.nav__inner{width:min(var(--max),calc(100% - 28px));align-items:flex-start;flex-direction:column;padding:16px 0}.nav__links{width:100%;overflow-x:auto;padding-bottom:2px}.section,.section-transition,footer{width:min(var(--max),calc(100% - 28px))}.portrait{width:min(100%,360px)}.detail,.experience-node{grid-template-columns:1fr;gap:10px}.experience-graph__list:before,.experience-node:before{display:none}}@media(max-width:520px){h1{font-size:clamp(3.15rem,17vw,4.45rem)}.project,.now__panel{padding:22px}}@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.01ms!important}}
   </style>
 </head>
 <body>
-  <!-- Top Bar Navigation -->
-  <nav class="nav" aria-label="Primary">
+  <div class="page-wipe" aria-hidden="true"></div>
+  <nav class="nav" aria-label="Primary navigation">
     <div class="nav__inner">
-      <div class="brand">
-        <span class="brand-sig">Timothy</span>
-        <span class="brand-sig">Pasaribu</span>
-      </div>
-      <div class="nav__links">
-        <a class="nav__link" href="#about">About</a>
-        <a class="nav__link" href="#experience">Experience</a>
-        <a class="nav__link" href="#projects">Projects</a>
-        <!-- <a class="nav__link" href="./hobbies.html">Hobbies</a> -->
-        <a class="nav__link" href="public/documents/cv.pdf" target="_blank" rel="noopener">CV</a>
-      </div>
+      <a class="brand" href="#top" aria-label="Timothy Pasaribu home"><span class="brand__sig">Timothy</span><span class="brand__sig">Pasaribu</span></a>
+      <div class="nav__links"><a href="#about">About</a><a href="#experience">Experience</a><a href="#work">Work</a><a href="#now">Now</a><a href="public/documents/cv.pdf" target="_blank" rel="noopener">CV</a></div>
     </div>
   </nav>
-
-  <main class="wrap">
-    <header>
-      <h1>Timothy Pasaribu</h1>
-      <p class="tagline">Applied ML · NLP Research · ML engineering</p>
-    </header>
-
-    <section id="about" aria-labelledby="about-title">
-  <div class="about__grid">
-    <div class="about__text">
-      <h2 id="about-title" >About</h2>
-      <p class="lead">
-        I'm a fourth-year Data Science student and NLP Research Assistant at UofT.
-      </p>
-      <p class="lead">
-        I enjoy building machine learning systems end to end, from data preparation and model training to deployment.
-        Lately, I've been working on computational moral inference and character representation learning under supervision of <a href="https://aidaramezani.github.io/" target="_blank" rel="noopener">Aida Ramezani</a> and <a href="https://www.cs.utoronto.ca/~yangxu/" target="_blank" rel="noopener">Prof. Yang Xu</a>.
-      </p>
-      <p class="lead">
-        I was a teaching assistant for STA130 in Fall 2024 term and will be returning in Fall 2025.
-      </p>
-
-      <p class="lead">
-        I'm open to collaborations in applied machine learning, especially in areas like natural language processing, computer vision, and data engineering.
-      </p>
-    </div>
-
-    <figure class="about__photo">
-      <img src="public/images/main_profile_pic.jpg" alt="Timothy Pasaribu">
-    </figure>
-  </div>
-
-  <ul class="socials">
-    <li>
-      <a class="social" href="mailto:timothy.pasaribu@mail.utoronto.ca" aria-label="Email" title="Email">
-        <!-- Envelope -->
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-          <path d="M4 4h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2Z" stroke="currentColor" stroke-width="1.6"/>
-          <path d="m3 7 9 6 9-6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-      </a>
-    </li>
-    <li>
-      <a class="social" href="https://github.com/timothym4r" target="_blank" rel="noopener" aria-label="GitHub" title="GitHub">
-        <!-- GitHub -->
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-          <path d="M12 2C6.48 2 2 6.58 2 12.26c0 4.51 2.87 8.33 6.84 9.68.5.1.68-.22.68-.49 0-.24-.01-.87-.01-1.71-2.78.62-3.37-1.37-3.37-1.37-.46-1.2-1.12-1.52-1.12-1.52-.91-.64.07-.63.07-.63 1 .07 1.52 1.06 1.52 1.06.9 1.58 2.36 1.12 2.93.85.09-.67.36-1.12.65-1.38-2.22-.26-4.56-1.13-4.56-5 0-1.11.39-2.02 1.03-2.73-.1-.25-.45-1.29.1-2.69 0 0 .84-.27 2.75 1.04a9.2 9.2 0 0 1 5 0c1.9-1.31 2.74-1.04 2.74-1.04.55 1.4.2 2.44.1 2.69.64.71 1.03 1.62 1.03 2.73 0 3.88-2.34 4.73-4.57 4.98.37.33.69.97.69 1.96 0 1.41-.01 2.55-.01 2.9 0 .27.18.6.69.49A10.04 10.04 0 0 0 22 12.26C22 6.58 17.52 2 12 2Z"/>
-        </svg>
-      </a>
-    </li>
-    <li>
-      <a class="social" href="https://www.linkedin.com/in/timothy-pasaribu-0804aa211/" target="_blank" rel="noopener" aria-label="LinkedIn" title="LinkedIn">
-        <!-- LinkedIn -->
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-          <path d="M4.98 3.5a2.5 2.5 0 1 1 0 5.001 2.5 2.5 0 0 1 0-5.001ZM3.5 9.75h2.96v10.75H3.5V9.75Zm6.01 0h2.83v1.47h.04c.39-.74 1.34-1.53 2.76-1.53 2.95 0 3.5 1.94 3.5 4.46v6.35h-2.96v-5.63c0-1.34-.02-3.06-1.87-3.06-1.88 0-2.17 1.47-2.17 2.97v5.72H9.51V9.75Z"/>
-        </svg>
-      </a>
-    </li>
-    <!-- Optional CV icon -->
-    <!--
-    <li>
-      <a class="social" href="cv.pdf" target="_blank" rel="noopener" aria-label="CV" title="CV">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6Z" stroke="currentColor" stroke-width="1.6"/>
-          <path d="M14 2v6h6" stroke="currentColor" stroke-width="1.6"/>
-          <path d="M8 13h8M8 16h8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
-        </svg>
-      </a>
-    </li>
-    -->
-  </ul>
-</section>
-
-
-  <section id="experience">
-    <h2 class="section-title">Experience</h2>
-    <ul class="clean">
-      <li><strong>Research Assistant — Moral Inference Project, University of Toronto</strong> · Working with computational methods on moral inference and character representations under <a href="https://aidaramezani.github.io/" target="_blank" rel="noopener">Aida Ramezani</a> &amp; <a href="https://www.cs.utoronto.ca/~yangxu/" target="_blank" rel="noopener">Prof. Yang Xu</a>; exploring LLM representation and careful evaluation.</li>
-      <li><strong>Teaching Assistant — STA130 (Data Science & Statistical Reasoning), UofT</strong> · Led tutorials (~24 students) and office hours; TA in Fall 2024 and returning in Fall 2025.</li>
-      <li><strong>Machine Learning Intern — Bank Negara Indonesia (BNI)</strong> · Indonesian ID classification, sentiment analysis, and transaction categorization using LLMs; experience taking models from training toward deployment.</li>
-      <li><strong>Social Good Team — Students in Data Science & Statistics @ UofT</strong> · Building a model to help predict student performance and support academic planning.</li>
-    </ul>
-  </section>
-
-  <section id="projects">
-    <h2 class="section-title">Projects</h2>
-    <ul class="clean">
-      <li><strong><a href="https://github.com/timothym4r/ScriptSense" target="_blank" rel="noopener">ScriptSense: LLM-Powered Narrative Intelligence Platform</a></strong> · Built a RAG pipeline with chunked ingestion, vector indexing, and LLM summarization to support semantic search and exploratory analysis across 500+ movie scripts; also engineered dialogue and action extraction from noisy PDFs into analysis-ready datasets.</li>
-      <li><strong><a href="https://github.com/UofT-CSC490-W2026/MindMap" target="_blank" rel="noopener"></a>MindMap: Research Knowledge Graph Platform</strong> · Modeled citation networks and semantic relationships across 10,000+ papers using graph construction and embedding-based clustering, then built an LLM-powered query interface to make large academic corpora interactively explorable.</li>
-      <li><strong><a href="https://github.com/timothym4r/FinRAG" target="_blank" rel="noopener">FinRAG: Financial Retrieval-Augmented QA System</a></strong> · Built a retrieval-augmented QA system over 10-K filings and earnings reports for investment research, improving retrieval precision by 20%+ with domain-specific chunking and re-ranking for long-form financial documents.</li>
-      <li><strong><a href="https://github.com/timothym4r/Indonesian-ID-Recognition" target="_blank" rel="noopener">Indonesian ID Recognition (CNN)</a></strong> · Detects and classifies KTP IDs to harden OCR against spoofs; experimented with ESRGAN/EDSR for image enhancement.</li>
-      <li><strong><a href="https://github.com/timothym4r/Politics-and-Corruption-on-FDI-GDP-relation" target="_blank" rel="noopener">Macroecon × Governance Analysis</a></strong> · World Bank data; panel regression on FDI→GDP growth with interactions (political stability & corruption); planned ML baselines (e.g., XGBoost) and SHAP diagnostics.</li>
-    </ul>
-  </section>
-
-    <footer>
-      <div>© <span id="year"></span> Timothy Pasaribu · Hosted on GitHub Pages.</div>
-    </footer>
+  <main id="top">
+    <section class="hero" aria-labelledby="hero-title">
+      <canvas id="field" aria-hidden="true"></canvas>
+      <div class="hero__content reveal">
+        <p class="eyebrow">AI + Data + Software</p>
+        <h1 id="hero-title"><span>Timothy</span><span>Pasaribu</span></h1>
+        <p class="hero__copy">I build intelligent systems that turn messy data, language, and workflows into useful products. My work sits between <strong>machine learning research</strong>, <strong>data engineering</strong>, and <strong>software that people can actually use</strong>.</p>
+        <div class="hero__actions"><a class="button button--primary" href="#work">View selected work</a><a class="button" href="public/documents/cv.pdf" target="_blank" rel="noopener">CV</a></div>
+        <div class="social-icons" aria-label="Social links">
+          <a class="icon-link" href="mailto:timothy.pasaribu@mail.utoronto.ca" aria-label="Email Timothy" title="Email"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 5h16a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2Z" stroke="currentColor" stroke-width="1.8"/><path d="m3 7 9 6 9-6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+          <a class="icon-link" href="https://github.com/timothym4r" target="_blank" rel="noopener" aria-label="GitHub" title="GitHub"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.48 2 2 6.58 2 12.26c0 4.51 2.87 8.33 6.84 9.68.5.1.68-.22.68-.49 0-.24-.01-.87-.01-1.71-2.78.62-3.37-1.37-3.37-1.37-.46-1.2-1.12-1.52-1.12-1.52-.91-.64.07-.63.07-.63 1 .07 1.52 1.06 1.52 1.06.9 1.58 2.36 1.12 2.93.85.09-.67.36-1.12.65-1.38-2.22-.26-4.56-1.13-4.56-5 0-1.11.39-2.02 1.03-2.73-.1-.25-.45-1.29.1-2.69 0 0 .84-.27 2.75 1.04a9.2 9.2 0 0 1 5 0c1.9-1.31 2.74-1.04 2.74-1.04.55 1.4.2 2.44.1 2.69.64.71 1.03 1.62 1.03 2.73 0 3.88-2.34 4.73-4.57 4.98.37.33.69.97.69 1.96 0 1.41-.01 2.55-.01 2.9 0 .27.18.6.69.49A10.04 10.04 0 0 0 22 12.26C22 6.58 17.52 2 12 2Z"/></svg></a>
+          <a class="icon-link" href="https://www.linkedin.com/in/timothy-pasaribu-0804aa211/" target="_blank" rel="noopener" aria-label="LinkedIn" title="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5.001 2.5 2.5 0 0 1 0-5.001ZM3.5 9.75h2.96v10.75H3.5V9.75Zm6.01 0h2.83v1.47h.04c.39-.74 1.34-1.53 2.76-1.53 2.95 0 3.5 1.94 3.5 4.46v6.35h-2.96v-5.63c0-1.34-.02-3.06-1.87-3.06-1.88 0-2.17 1.47-2.17 2.97v5.72H9.51V9.75Z"/></svg></a>
+        </div>
+      </div>
+      <div class="hero__visual reveal" aria-label="Portrait of Timothy Pasaribu"><figure class="portrait"><img src="public/images/main_profile_pic.jpg" alt="Portrait of Timothy Pasaribu"></figure></div>
+    </section>
+    <section class="section" id="about" aria-labelledby="about-title">
+      <div class="section__head section__head--simple reveal"><h2 id="about-title">About</h2></div>
+      <div class="about">
+        <div class="reveal">
+          <p>I am an Indonesian technologist based in Toronto, recently graduated from the University of Toronto. My background spans data science, computer science, machine learning research, applied NLP, analytics, and full-stack engineering.</p>
+          <p>At UofT, I worked with <strong><a href="https://aidaramezani.github.io/" target="_blank" rel="noopener">Aida Ramezani</a></strong> and <strong><a href="https://www.cs.toronto.edu/~yangxu/" target="_blank" rel="noopener">Prof. Yang Xu</a></strong> on computational moral character inference, studying whether transformer representations of dialogue can predict perceived moral and personality traits. I also worked with <strong><a href="https://www.statistics.utoronto.ca/people/directories/all-faculty/radu-craiu" target="_blank" rel="noopener">Prof. Radu Craiu</a></strong> as a Data Science Researcher on statistical and data science research.</p>
+          <p>At <strong>Bank Negara Indonesia</strong>, I worked on applied financial NLP problems such as transaction categorization, sentiment analysis, customer segmentation, and multilingual text processing. I also contributed to an <strong>AI Ed-platform</strong> at the University of Waterloo associated with <strong><a href="https://uwaterloo.ca/conrad-school-entrepreneurship-business/profile/vcui" target="_blank" rel="noopener">Prof. Victor Cui</a></strong>, and built systems like <strong>ScriptSense</strong>, <strong>MindMap</strong>, and <strong>Scriptorium</strong> to explore document AI, knowledge graphs, and full-stack product engineering.</p>
+          <p>I like the full path from problem to system: define the question, understand the data, choose an approach, test it honestly, and ship something understandable.</p>
+        </div>
+        <ul class="stack reveal" aria-label="Technical strengths"><li><strong>AI / ML</strong><span>PyTorch, scikit-learn, Hugging Face, BERT-style models, sentence transformers, XGBoost, embeddings, RAG concepts.</span></li><li><strong>Data</strong><span>Python, SQL, pandas, NumPy, BigQuery, analytics workflows, visualization, experimentation, and metric design.</span></li><li><strong>Software</strong><span>TypeScript, JavaScript, React, Next.js, Django REST Framework, Prisma, Docker, AWS, REST APIs, JWT authentication.</span></li></ul>
+      </div>
+    </section>
+    <section class="section" id="experience" aria-labelledby="experience-title">
+      <div class="section__head reveal"><h2 id="experience-title">Experience</h2></div>
+      <div class="experience-graph reveal"><ol class="experience-graph__list">
+        <li class="experience-node"><div class="experience-node__date">Aug 2026 - Present</div><div class="experience-node__body"><h3>Data Analyst - Mekanism / Plus Company</h3><p>Working in a marketing and advertising data environment with exposure to analytics workflows, data engineering practices, internal tooling, Dataform-style workflows, and opportunities for AI-assisted productivity.</p></div></li>
+        <li class="experience-node"><div class="experience-node__date">During UofT</div><div class="experience-node__body"><h3>NLP Research Assistant - Moral Inference Project</h3><p>Worked with <strong><a href="https://aidaramezani.github.io/" target="_blank" rel="noopener">Aida Ramezani</a></strong> and <strong><a href="https://www.cs.toronto.edu/~yangxu/" target="_blank" rel="noopener">Prof. Yang Xu</a></strong> on computational moral character inference from dialogue, experimenting with transformer representations, sentence embeddings, dimensionality reduction, and careful evaluation across roughly 300,000 utterances.</p></div></li>
+        <li class="experience-node"><div class="experience-node__date">During UofT</div><div class="experience-node__body"><h3>Data Science Researcher - Prof. Radu Craiu</h3><p>Worked with <strong><a href="https://www.statistics.utoronto.ca/people/directories/all-faculty/radu-craiu" target="_blank" rel="noopener">Prof. Radu Craiu</a></strong> on data science and statistical research, strengthening my statistical modeling and research workflow foundations.</p></div></li>
+        <li class="experience-node"><div class="experience-node__date">Pre-2026</div><div class="experience-node__body"><h3>Machine Learning Intern - Bank Negara Indonesia</h3><p>Built applied NLP and ML workflows around financial-domain data, including transaction categorization, sentiment analysis, customer segmentation, multilingual text processing, SQL workflows, Streamlit, and AWS SageMaker exposure.</p></div></li>
+        <li class="experience-node"><div class="experience-node__date">During UofT</div><div class="experience-node__body"><h3>Contributor - AI Ed-platform, University of Waterloo</h3><p>Contributed to an <strong>AI Ed-platform</strong> associated with <strong><a href="https://experts.uwaterloo.ca/victor-cui" target="_blank" rel="noopener">Prof. Victor Cui</a></strong>'s group, focused on helping answer student questions through a user-facing AI product.</p></div></li>
+        <li class="experience-node"><div class="experience-node__date">During UofT</div><div class="experience-node__body"><h3>Social Good Team - Students in Data Science &amp; Statistics at UofT</h3><p>Worked on a model intended to help predict student performance and support academic planning, connecting data science methods with a student-facing planning problem.</p></div></li>
+        <li class="experience-node"><div class="experience-node__date">Fall 2024, Fall 2025</div><div class="experience-node__body"><h3>Teaching Assistant - STA130, University of Toronto</h3><p>Led tutorials and office hours for introductory data science and statistical reasoning, helping students develop confidence with quantitative ideas and problem solving.</p></div></li>
+        <li class="experience-node"><div class="experience-node__date">Completed 2026</div><div class="experience-node__body"><h3>University of Toronto - Data Science, Computer Science, AI</h3><p>Completed a Data Science Specialist, Computer Science Major, and Artificial Intelligence focus, with coursework spanning machine learning, deep learning, AI, computer vision, statistics, and web development.</p></div></li>
+      </ol></div>
+    </section>
+    <div class="section-transition reveal" aria-hidden="true"></div>
+    <section class="section" id="work" aria-labelledby="work-title">
+      <div class="section__head reveal"><h2 id="work-title">Selected Work</h2><p class="section__note">A tighter selection of projects that show the arc: NLP research, AI products, document systems, analytics, and full-stack engineering.</p></div>
+      <div class="work">
+        <article class="project reveal"><div><span class="project__index">01 / NLP RESEARCH</span><h3>Moral Character Inference</h3><p class="project__summary">Investigated whether transformer representations of dialogue can predict how fictional characters are perceived along moral and personality dimensions.</p><div class="project__figure"><span>Placeholder image: trait map / embedding plot</span></div><div class="project__meta"><span class="pill">BERT</span><span class="pill">RoBERTa</span><span class="pill">DeBERTa</span><span class="pill">Autoencoders</span><span class="pill">Evaluation</span></div></div><dl class="project__details"><div class="detail"><dt>Problem</dt><dd>Character perception is subtle, social, and noisy. The research asked which traits are encoded in language strongly enough to be modeled.</dd></div><div class="detail"><dt>Scale</dt><dd>Worked with roughly 300,000 utterances, 201 characters, 97 films, and 500 bipolar trait dimensions.</dd></div><div class="detail"><dt>Approach</dt><dd>Experimented with transformer fine-tuning, sentence embeddings, PCA, ridge regression, and masked-language-model representation learning.</dd></div></dl></article>
+        <article class="project reveal"><div><span class="project__index">02 / DOCUMENT AI</span><h3>ScriptSense</h3><p class="project__summary">A narrative intelligence platform for exploring hundreds of movie scripts through semantic search, structured extraction, and LLM summarization.</p><div class="project__figure"><span>Placeholder image: script ingestion pipeline</span></div><div class="project__meta"><span class="pill">RAG</span><span class="pill">Vector Search</span><span class="pill">PDF Parsing</span><span class="pill">LLMs</span></div></div><dl class="project__details"><div class="detail"><dt>Problem</dt><dd>Movie scripts are long, noisy documents. Useful analysis depends on extracting dialogue, action, characters, and high-level story patterns reliably.</dd></div><div class="detail"><dt>Build</dt><dd>Engineered chunked ingestion, vector indexing, semantic retrieval, and summarization across 500+ scripts.</dd></div><div class="detail"><dt>Signal</dt><dd>Shows the Document AI direction I want to deepen: parsing unstructured files into systems people can query and explore.</dd></div><a class="project__link" href="https://github.com/timothym4r/ScriptSense" target="_blank" rel="noopener">Open repository</a></dl></article>
+        <article class="project reveal"><div><span class="project__index">03 / KNOWLEDGE SYSTEMS</span><h3>MindMap</h3><p class="project__summary">A research knowledge graph platform for navigating large academic corpora through citation networks, embeddings, clustering, and LLM-powered search.</p><div class="project__figure"><span>Placeholder image: citation graph cluster</span></div><div class="project__meta"><span class="pill">Knowledge Graphs</span><span class="pill">Embeddings</span><span class="pill">Clustering</span><span class="pill">LLM Querying</span></div></div><dl class="project__details"><div class="detail"><dt>Problem</dt><dd>Research discovery often breaks when the corpus grows beyond what a person can scan.</dd></div><div class="detail"><dt>Build</dt><dd>Modeled citation and semantic relationships across 10,000+ papers using graph construction and embedding-based clustering.</dd></div><div class="detail"><dt>Outcome</dt><dd>Turned static paper collections into an interactive map for asking questions and tracing concepts through a research space.</dd></div></dl></article>
+        <article class="project reveal"><div><span class="project__index">04 / FULL-STACK PRODUCT</span><h3>Scriptorium</h3><p class="project__summary">A full-stack web application that stretched beyond notebooks into product architecture, authentication, databases, containerization, and cloud deployment.</p><div class="project__figure"><span>Placeholder image: product UI / architecture</span></div><div class="project__meta"><span class="pill">Next.js</span><span class="pill">TypeScript</span><span class="pill">Prisma</span><span class="pill">JWT</span><span class="pill">Docker</span><span class="pill">AWS</span></div></div><dl class="project__details"><div class="detail"><dt>Problem</dt><dd>Build a complete web system with real application boundaries: UI, backend logic, authentication, database interactions, and deployment.</dd></div><div class="detail"><dt>Learning</dt><dd>Strengthened my software engineering foundation and made the bridge from ML prototypes to usable systems much more concrete.</dd></div><div class="detail"><dt>Why it matters</dt><dd>AI engineering still needs product judgment, reliable interfaces, and infrastructure awareness.</dd></div></dl></article>
+        <article class="project reveal"><div><span class="project__index">05 / APPLIED ANALYTICS</span><h3>Marketing Performance Analysis</h3><p class="project__summary">A business analytics case study translating advertising data into hypotheses, metrics, visual analysis, and clear recommendations.</p><div class="project__figure"><span>Placeholder image: campaign performance dashboard</span></div><div class="project__meta"><span class="pill">Python</span><span class="pill">Jupyter</span><span class="pill">CTR/CPC</span><span class="pill">Funnel Analysis</span></div></div><dl class="project__details"><div class="detail"><dt>Question</dt><dd>What changed in campaign performance, where did efficiency break down, and which segments deserved deeper attention?</dd></div><div class="detail"><dt>Method</dt><dd>Analyzed social, display, and paid-search data across spend, impressions, clicks, purchases, CTR, CPC, purchase rate, and cost per purchase.</dd></div><div class="detail"><dt>Output</dt><dd>Produced a Python analysis workflow, visualizations, and an 8-12 page analytical report for decision-making.</dd></div></dl></article>
+      </div>
+    </section>
+    <div class="section-transition reveal" aria-hidden="true"></div>
+    <section class="section" id="now" aria-labelledby="now-title"><div class="now"><div class="now__panel reveal"><h2 id="now-title">Current Focus</h2><p>Timothy is starting his professional career in Toronto as a Data Analyst at Mekanism / Plus Company, while deliberately growing toward applied AI and data engineering. The near-term goal is to understand real team workflows deeply, then build tools that make repetitive or information-heavy work easier.</p><p>Long-term, the thread is clear: data foundations, machine learning, software engineering, and AI systems that solve concrete operational problems.</p></div><ul class="focus-list reveal" aria-label="Current technical interests"><li><span>01</span><div><strong>Document AI</strong><br>Parsing, retrieval, extraction, and question answering over messy documents.</div></li><li><span>02</span><div><strong>AI systems</strong><br>Evaluation, latency, model routing, data pipelines, and product constraints.</div></li><li><span>03</span><div><strong>Analytics engineering</strong><br>Reliable metrics, repeatable workflows, and business-facing data products.</div></li></ul></div></section>
+    <section class="contact" id="contact" aria-labelledby="contact-title"><div class="section"><div class="contact__inner reveal"><h2 id="contact-title">Contact</h2><div><p>Open to conversations around AI engineering, document intelligence, applied ML, data systems, analytics engineering, and early-career technical roles in Toronto or remote teams.</p><div class="contact__actions"><a class="icon-link" href="mailto:timothy.pasaribu@mail.utoronto.ca" aria-label="Email Timothy" title="Email"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 5h16a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2Z" stroke="currentColor" stroke-width="1.8"/><path d="m3 7 9 6 9-6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a><a class="icon-link" href="https://github.com/timothym4r" target="_blank" rel="noopener" aria-label="GitHub" title="GitHub"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.48 2 2 6.58 2 12.26c0 4.51 2.87 8.33 6.84 9.68.5.1.68-.22.68-.49 0-.24-.01-.87-.01-1.71-2.78.62-3.37-1.37-3.37-1.37-.46-1.2-1.12-1.52-1.12-1.52-.91-.64.07-.63.07-.63 1 .07 1.52 1.06 1.52 1.06.9 1.58 2.36 1.12 2.93.85.09-.67.36-1.12.65-1.38-2.22-.26-4.56-1.13-4.56-5 0-1.11.39-2.02 1.03-2.73-.1-.25-.45-1.29.1-2.69 0 0 .84-.27 2.75 1.04a9.2 9.2 0 0 1 5 0c1.9-1.31 2.74-1.04 2.74-1.04.55 1.4.2 2.44.1 2.69.64.71 1.03 1.62 1.03 2.73 0 3.88-2.34 4.73-4.57 4.98.37.33.69.97.69 1.96 0 1.41-.01 2.55-.01 2.9 0 .27.18.6.69.49A10.04 10.04 0 0 0 22 12.26C22 6.58 17.52 2 12 2Z"/></svg></a><a class="icon-link" href="https://www.linkedin.com/in/timothy-pasaribu-0804aa211/" target="_blank" rel="noopener" aria-label="LinkedIn" title="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5.001 2.5 2.5 0 0 1 0-5.001ZM3.5 9.75h2.96v10.75H3.5V9.75Zm6.01 0h2.83v1.47h.04c.39-.74 1.34-1.53 2.76-1.53 2.95 0 3.5 1.94 3.5 4.46v6.35h-2.96v-5.63c0-1.34-.02-3.06-1.87-3.06-1.88 0-2.17 1.47-2.17 2.97v5.72H9.51V9.75Z"/></svg></a><a class="button" href="public/documents/cv.pdf" target="_blank" rel="noopener">CV</a></div></div></div></div></section>
   </main>
-
+  <footer><span>&copy; <span id="year"></span> Timothy Pasaribu. Built as a static portfolio and hosted on GitHub Pages.</span></footer>
   <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
+    document.getElementById("year").textContent=new Date().getFullYear();const reveals=document.querySelectorAll(".reveal"),observer=new IntersectionObserver(e=>{e.forEach(e=>{e.isIntersecting&&(e.target.classList.add("is-visible"),observer.unobserve(e.target))})},{threshold:.12});reveals.forEach(e=>observer.observe(e));const canvas=document.getElementById("field"),ctx=canvas.getContext("2d"),prefersReducedMotion=window.matchMedia("(prefers-reduced-motion: reduce)").matches,pageWipe=document.querySelector(".page-wipe");document.querySelectorAll('a[href^="#"]').forEach(e=>{e.addEventListener("click",()=>{pageWipe&&!prefersReducedMotion&&(pageWipe.classList.remove("is-active"),void pageWipe.offsetWidth,pageWipe.classList.add("is-active"))})});let points=[],raf=null;function colorFor(e,t){return[`rgba(83, 227, 239, ${t})`,`rgba(185, 242, 124, ${t})`,`rgba(255, 122, 100, ${t})`,`rgba(247, 198, 109, ${t})`,`rgba(169, 149, 255, ${t})`][e.hue]}function drawField(){const e=canvas.getBoundingClientRect();ctx.clearRect(0,0,e.width,e.height);const t=ctx.createRadialGradient(.48*e.width,.32*e.height,40,.48*e.width,.32*e.height,.76*e.width);t.addColorStop(0,"rgba(83, 227, 239, 0.16)"),t.addColorStop(.45,"rgba(255, 122, 100, 0.045)"),t.addColorStop(1,"rgba(255, 253, 248, 0)"),ctx.fillStyle=t,ctx.fillRect(0,0,e.width,e.height);for(let t=0;t<points.length;t++){const i=points[t];for(let n=t+1;n<points.length;n++){const o=points[n],r=i.x-o.x,a=i.y-o.y,s=Math.hypot(r,a);s<118&&(ctx.strokeStyle=`rgba(16, 20, 25, ${.16*(1-s/118)})`,ctx.lineWidth=1,ctx.beginPath(),ctx.moveTo(i.x,i.y),ctx.lineTo(o.x,o.y),ctx.stroke())}}points.forEach(e=>{ctx.fillStyle=colorFor(e,.82),ctx.shadowColor=colorFor(e,.42),ctx.shadowBlur=12,ctx.beginPath(),ctx.arc(e.x,e.y,e.r,0,2*Math.PI),ctx.fill(),ctx.shadowBlur=0})}function resizeField(){const e=canvas.getBoundingClientRect(),t=Math.min(window.devicePixelRatio||1,2);canvas.width=Math.max(1,Math.floor(e.width*t)),canvas.height=Math.max(1,Math.floor(e.height*t)),ctx.setTransform(t,0,0,t,0,0);const i=Math.min(86,Math.max(42,Math.floor(e.width*e.height/7200)));points=Array.from({length:i},(t,i)=>({x:Math.random()*e.width,y:Math.random()*e.height,r:1.1+2.2*Math.random(),vx:.34*(Math.random()-.5),vy:.34*(Math.random()-.5),hue:i%5})),drawField()}function tick(){const e=canvas.getBoundingClientRect();points.forEach(t=>{t.x+=t.vx,t.y+=t.vy,(t.x<0||t.x>e.width)&&(t.vx*=-1),(t.y<0||t.y>e.height)&&(t.vy*=-1)}),drawField(),raf=requestAnimationFrame(tick)}resizeField(),window.addEventListener("resize",resizeField),prefersReducedMotion||(raf=requestAnimationFrame(tick)),window.addEventListener("pagehide",()=>{raf&&cancelAnimationFrame(raf)});
   </script>
 </body>
 </html>
