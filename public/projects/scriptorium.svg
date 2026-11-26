@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-label="Illustration of the Scriptorium web application">
+  <defs>
+    <linearGradient id="bg" x2="1" y2="1"><stop stop-color="#faf3ed"/><stop offset="1" stop-color="#eaeff5"/></linearGradient>
+    <filter id="shadow"><feDropShadow dx="0" dy="14" stdDeviation="17" flood-color="#2b3842" flood-opacity=".16"/></filter>
+  </defs>
+  <rect width="800" height="450" fill="url(#bg)"/>
+  <circle cx="688" cy="65" r="115" fill="#eac7ad" opacity=".32"/>
+  <circle cx="102" cy="407" r="134" fill="#bcd7dd" opacity=".36"/>
+  <rect x="65" y="45" width="670" height="360" rx="18" fill="#fff" filter="url(#shadow)"/>
+  <path d="M83 45h634a18 18 0 0 1 18 18v28H65V63a18 18 0 0 1 18-18" fill="#23333c"/>
+  <circle cx="92" cy="69" r="6" fill="#f58f87"/><circle cx="113" cy="69" r="6" fill="#f1c575"/><circle cx="134" cy="69" r="6" fill="#89c3a5"/>
+  <rect x="65" y="91" width="165" height="314" fill="#f3f5f4"/>
+  <text x="88" y="127" fill="#344a50" font-family="Arial,sans-serif" font-size="19" font-weight="700">Scriptorium</text>
+  <g fill="#b7c9c7"><rect x="88" y="155" width="112" height="10" rx="5"/><rect x="88" y="185" width="88" height="10" rx="5"/><rect x="88" y="215" width="105" height="10" rx="5"/><rect x="88" y="245" width="73" height="10" rx="5"/></g>
+  <rect x="250" y="113" width="458" height="269" rx="10" fill="#fbfbfa" stroke="#dce5e2"/>
+  <rect x="250" y="113" width="458" height="36" rx="10" fill="#e9eeeb"/>
+  <circle cx="273" cy="131" r="4" fill="#7d9e9c"/>
+  <text x="289" y="136" fill="#48646a" font-family="Arial,sans-serif" font-size="13">workspace / notes.md</text>
+  <g font-family="Arial,sans-serif" font-size="16">
+    <text x="281" y="185" fill="#244b60" font-weight="700"># Research notes</text>
+    <text x="281" y="222" fill="#697d80">Ideas, drafts, and references</text>
+    <text x="281" y="260" fill="#348d8d">const</text><text x="326" y="260" fill="#3d5262">project =</text><text x="415" y="260" fill="#b16f58">"Scriptorium"</text>
+  </g>
+  <g fill="#d9e5e1"><rect x="281" y="283" width="365" height="9" rx="4"/><rect x="281" y="305" width="310" height="9" rx="4"/><rect x="281" y="327" width="344" height="9" rx="4"/></g>
+  <path d="M65 385h670v3a17 17 0 0 1-17 17H82a17 17 0 0 1-17-17z" fill="#d6dedb"/>
+</svg>

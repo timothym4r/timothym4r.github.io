@@ -1,0 +1,149 @@
+---
+import "../styles/global.css";
+import { DATA } from "@/data/resume";
+import { CONFIG } from "@/data/config";
+
+interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+  canonicalURL?: string;
+  noindex?: boolean;
+}
+
+const {
+  title,
+  description = DATA.description,
+  image,
+  canonicalURL = Astro.url.href,
+  noindex = false,
+} = Astro.props;
+
+const pageTitle = title
+  ? CONFIG.seo.titleTemplate.replace("%s", title).replace("%n", DATA.name)
+  : `${DATA.name} | Data Scientist & AI Engineer`;
+const ogImage = image
+  ? image.startsWith("http")
+    ? image
+    : `${CONFIG.site.url}${image}`
+  : `${CONFIG.site.url}${DATA.ogImage}`;
+
+const { light, dark, radius } = CONFIG.theme;
+const { baseFontSize } = CONFIG.typography;
+---
+
+<html
+  lang={CONFIG.site.locale.split("_")[0]}
+  style={`font-size: ${baseFontSize}%;`}
+>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+
+    <!-- Theme variables from config.ts -->
+    <style
+      set:html={`
+      :root {
+        --radius: ${radius};
+        --background: ${light.background};
+        --foreground: ${light.foreground};
+        --card: ${light.card};
+        --card-foreground: ${light.cardForeground};
+        --popover: ${light.popover};
+        --popover-foreground: ${light.popoverForeground};
+        --primary: ${light.primary};
+        --primary-foreground: ${light.primaryForeground};
+        --secondary: ${light.secondary};
+        --secondary-foreground: ${light.secondaryForeground};
+        --muted: ${light.muted};
+        --muted-foreground: ${light.mutedForeground};
+        --accent: ${light.accent};
+        --accent-foreground: ${light.accentForeground};
+        --destructive: ${light.destructive};
+        --border: ${light.border};
+        --input: ${light.input};
+        --ring: ${light.ring};
+      }
+      .dark {
+        --background: ${dark.background};
+        --foreground: ${dark.foreground};
+        --card: ${dark.card};
+        --card-foreground: ${dark.cardForeground};
+        --popover: ${dark.popover};
+        --popover-foreground: ${dark.popoverForeground};
+        --primary: ${dark.primary};
+        --primary-foreground: ${dark.primaryForeground};
+        --secondary: ${dark.secondary};
+        --secondary-foreground: ${dark.secondaryForeground};
+        --muted: ${dark.muted};
+        --muted-foreground: ${dark.mutedForeground};
+        --accent: ${dark.accent};
+        --accent-foreground: ${dark.accentForeground};
+        --destructive: ${dark.destructive};
+        --border: ${dark.border};
+        --input: ${dark.input};
+        --ring: ${dark.ring};
+      }
+    `}
+    ></style>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <!-- Primary meta -->
+    <title>{pageTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalURL} />
+    <meta name="theme-color" content="#fcfaf5" />
+
+    <!-- Robots -->
+    <meta name="robots" content={noindex ? "noindex, follow" : CONFIG.seo.robots} />
+    <meta
+      name="googlebot"
+      content="index, follow, max-video-preview:-1, max-image-preview:large, max-snippet:-1"
+    />
+
+    <!-- OpenGraph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:site_name" content={DATA.name} />
+    <meta property="og:locale" content={CONFIG.site.locale} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:alt" content={DATA.name} />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content={CONFIG.seo.twitterCard} />
+    <meta name="twitter:title" content={pageTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+    <script is:inline type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Person",
+      name: DATA.name,
+      url: CONFIG.site.url,
+      image: ogImage,
+      jobTitle: "Data Scientist and AI Engineer",
+      worksFor: { "@type": "Organization", name: "Plus Company", url: "https://pluscompany.com/en" },
+      alumniOf: { "@type": "CollegeOrUniversity", name: "University of Toronto" },
+      sameAs: [DATA.contact.social.GitHub.url, DATA.contact.social.LinkedIn.url],
+    })} />
+  </head>
+  <body class="min-h-screen bg-background font-sans antialiased relative">
+    <div class="ambient-gradient" aria-hidden="true"></div>
+    <header class="fixed inset-x-0 top-0 z-40 border-b border-border bg-background/90 backdrop-blur-xl">
+      <nav aria-label="Primary navigation" class="mx-auto flex max-w-5xl flex-wrap items-center justify-between gap-x-4 gap-y-2 px-5 py-3">
+        <a href="/" class="order-1 text-sm font-semibold tracking-tight sm:text-base">Timothy Pasaribu</a>
+        <div class="order-3 flex w-full items-center justify-between gap-3 text-xs text-muted-foreground sm:order-2 sm:w-auto sm:justify-start sm:gap-5 sm:text-sm">
+          {DATA.navbar.map((item) => <a class="whitespace-nowrap transition-colors hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring" href={item.href}>{item.label}</a>)}
+        </div>
+        <a href="/documents/cv.pdf" target="_blank" rel="noopener noreferrer" class="order-2 rounded-lg border border-border bg-card px-3 py-1.5 text-xs font-medium transition-colors hover:bg-accent sm:order-3 sm:text-sm">CV ↗</a>
+      </nav>
+    </header>
+    <div class="relative z-10 mx-auto max-w-2xl px-6 pb-24 pt-32 sm:pt-36">
+      <slot />
+    </div>
+  </body>
+</html>

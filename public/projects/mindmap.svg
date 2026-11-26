@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-label="Illustration of the MindMap academic paper graph interface">
+  <defs>
+    <linearGradient id="background" x2="1" y2="1"><stop stop-color="#e9f7f6"/><stop offset="1" stop-color="#eef0fa"/></linearGradient>
+    <filter id="shadow"><feDropShadow dx="0" dy="14" stdDeviation="16" flood-color="#314c63" flood-opacity=".13"/></filter>
+    <filter id="node-shadow"><feDropShadow dx="0" dy="5" stdDeviation="6" flood-color="#34546b" flood-opacity=".12"/></filter>
+  </defs>
+  <rect width="800" height="450" fill="url(#background)"/>
+  <circle cx="730" cy="28" r="116" fill="#cbd6fb" opacity=".4"/>
+  <circle cx="61" cy="427" r="133" fill="#b9e8db" opacity=".45"/>
+  <rect x="48" y="39" width="704" height="371" rx="19" fill="#fff" filter="url(#shadow)"/>
+  <path d="M67 39h666a19 19 0 0 1 19 19v31H48V58a19 19 0 0 1 19-19" fill="#263b4a"/>
+  <circle cx="76" cy="64" r="5" fill="#fb9c97"/><circle cx="94" cy="64" r="5" fill="#f3c979"/><circle cx="112" cy="64" r="5" fill="#8dceae"/>
+  <text x="138" y="70" fill="#fff" font-family="Arial,sans-serif" font-size="18" font-weight="700">MindMap</text>
+  <rect x="48" y="89" width="173" height="321" fill="#f5f8fa"/>
+  <rect x="66" y="111" width="137" height="35" rx="8" fill="#fff" stroke="#e0e9ec"/>
+  <circle cx="84" cy="128" r="6" fill="none" stroke="#91a8b3" stroke-width="2"/><path d="m89 133 5 5" stroke="#91a8b3" stroke-width="2"/>
+  <text x="104" y="133" fill="#91a8b3" font-family="Arial,sans-serif" font-size="11">Search papers</text>
+  <text x="68" y="178" fill="#7a8e9a" font-family="Arial,sans-serif" font-size="10" font-weight="700" letter-spacing="1.5">LIBRARY</text>
+  <rect x="64" y="190" width="142" height="35" rx="8" fill="#e1eeef"/>
+  <circle cx="83" cy="207" r="6" fill="#50a7aa"/>
+  <text x="99" y="212" fill="#31576b" font-family="Arial,sans-serif" font-size="12" font-weight="700">Paper graph</text>
+  <circle cx="83" cy="248" r="6" fill="#b3bfc8"/>
+  <text x="99" y="253" fill="#748893" font-family="Arial,sans-serif" font-size="12">Semantic search</text>
+  <circle cx="83" cy="289" r="6" fill="#b3bfc8"/>
+  <text x="99" y="294" fill="#748893" font-family="Arial,sans-serif" font-size="12">Saved papers</text>
+  <rect x="65" y="352" width="139" height="38" rx="9" fill="#fff" stroke="#e3eaed"/>
+  <circle cx="84" cy="370" r="7" fill="#b5d8d4"/>
+  <text x="100" y="374" fill="#617c87" font-family="Arial,sans-serif" font-size="11">31 papers indexed</text>
+  <text x="248" y="123" fill="#263e4d" font-family="Arial,sans-serif" font-size="18" font-weight="700">Explore the literature</text>
+  <text x="248" y="143" fill="#8a9ca4" font-family="Arial,sans-serif" font-size="11">Citation and semantic relationships</text>
+  <rect x="638" y="108" width="88" height="29" rx="14" fill="#edf7f4"/>
+  <circle cx="657" cy="122" r="5" fill="#60b8a5"/>
+  <text x="668" y="126" fill="#4c8a80" font-family="Arial,sans-serif" font-size="10">Graph view</text>
+  <g stroke="#a8c6d4" stroke-width="3" fill="none" stroke-linecap="round">
+    <path d="M361 232Q409 176 462 201"/>
+    <path d="M361 232Q413 280 445 298"/>
+    <path d="M527 207Q583 225 603 270"/>
+    <path d="M515 298Q558 314 603 270"/>
+    <path d="M461 210Q450 255 458 282" stroke-dasharray="6 7"/>
+  </g>
+  <g fill="#fff" filter="url(#node-shadow)">
+    <rect x="268" y="188" width="124" height="78" rx="12"/>
+    <rect x="438" y="164" width="133" height="76" rx="12"/>
+    <rect x="405" y="276" width="137" height="77" rx="12"/>
+    <rect x="578" y="251" width="136" height="77" rx="12"/>
+  </g>
+  <rect x="280" y="200" width="23" height="27" rx="4" fill="#d4eaf0"/><path d="M286 207h11m-11 6h11m-11 6h7" stroke="#83b8c6" stroke-width="2"/>
+  <rect x="450" y="176" width="23" height="27" rx="4" fill="#dcdcf7"/><path d="M456 183h11m-11 6h11m-11 6h7" stroke="#a4a1dc" stroke-width="2"/>
+  <rect x="417" y="288" width="23" height="27" rx="4" fill="#f6e5d6"/><path d="M423 295h11m-11 6h11m-11 6h7" stroke="#d8aa84" stroke-width="2"/>
+  <rect x="590" y="263" width="23" height="27" rx="4" fill="#d9eee5"/><path d="M596 270h11m-11 6h11m-11 6h7" stroke="#93c7ad" stroke-width="2"/>
+  <g font-family="Arial,sans-serif" font-size="11" font-weight="700" fill="#315062">
+    <text x="311" y="211">Language models</text>
+    <text x="481" y="187">Graph retrieval</text>
+    <text x="448" y="299">Evaluation</text>
+    <text x="621" y="274">Paper QA</text>
+  </g>
+  <g font-family="Arial,sans-serif" font-size="9" fill="#91a4ac">
+    <text x="281" y="247">Research paper · 2025</text>
+    <text x="451" y="221">Research paper · 2024</text>
+    <text x="418" y="334">Research paper · 2026</text>
+    <text x="591" y="309">Research paper · 2025</text>
+  </g>
+  <g fill="#7bbdc0"><circle cx="392" cy="227" r="5"/><circle cx="438" cy="202" r="5"/><circle cx="542" cy="299" r="5"/></g>
+</svg>
