@@ -19,7 +19,7 @@ function ProjectImage({ src, alt }: { src: string; alt: string }) {
       alt={alt}
       loading="lazy"
       decoding="async"
-      className="h-48 w-full bg-gradient-to-br from-slate-50 via-white to-cyan-50 object-contain"
+      className="h-48 w-full bg-gradient-to-br from-slate-50 via-white to-cyan-50 object-contain dark:from-slate-900 dark:via-slate-800 dark:to-cyan-950"
       onError={() => setImageError(true)}
     />
   );
@@ -73,9 +73,9 @@ export function ProjectCard({
           ) : image ? (
             <ProjectImage src={image} alt={title} />
           ) : (
-            <div className="relative flex h-48 items-end overflow-hidden bg-gradient-to-br from-slate-100 via-cyan-50 to-stone-100 p-5">
+            <div className="relative flex h-48 items-end overflow-hidden bg-gradient-to-br from-slate-100 via-cyan-50 to-stone-100 p-5 dark:from-slate-900 dark:via-cyan-950 dark:to-stone-900">
               <div className="absolute inset-0 opacity-30 [background-image:linear-gradient(to_right,#94a3b8_1px,transparent_1px),linear-gradient(to_bottom,#94a3b8_1px,transparent_1px)] [background-size:28px_28px]" />
-              <span className="relative max-w-[90%] text-xl font-semibold tracking-tight text-slate-800">{title}</span>
+              <span className="relative max-w-[90%] text-xl font-semibold tracking-tight text-slate-800 dark:text-slate-100">{title}</span>
             </div>
           )}
         </div>

@@ -6,6 +6,11 @@
 
 html {
   scroll-behavior: smooth;
+  color-scheme: light;
+}
+
+html.dark {
+  color-scheme: dark;
 }
 
 section[id] {
@@ -22,9 +27,19 @@ section[id] {
     radial-gradient(circle at 88% 34%, rgb(245 166 135 / 8%), transparent 32%);
 }
 
+.dark .ambient-gradient {
+  background:
+    radial-gradient(circle at 6% 12%, rgb(58 184 205 / 9%), transparent 30%),
+    radial-gradient(circle at 88% 34%, rgb(190 110 95 / 7%), transparent 32%);
+}
+
 .ripple-lines {
   -webkit-mask-image: linear-gradient(to bottom, transparent, black 13%, black 72%, transparent);
   mask-image: linear-gradient(to bottom, transparent, black 13%, black 72%, transparent);
+}
+
+.dark .ripple-lines {
+  filter: invert(1) hue-rotate(180deg);
 }
 
 @media (prefers-reduced-motion: reduce) {

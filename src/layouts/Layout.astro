@@ -96,6 +96,15 @@ const { baseFontSize } = CONFIG.typography;
     <meta name="description" content={description} />
     <link rel="canonical" href={canonicalURL} />
     <meta name="theme-color" content="#fcfaf5" />
+    <script is:inline>
+      try {
+        if (localStorage.getItem("timothy-theme") === "dark") {
+          document.documentElement.classList.add("dark");
+        }
+      } catch {
+        // The toggle still works when storage is unavailable.
+      }
+    </script>
 
     <!-- Robots -->
     <meta name="robots" content={noindex ? "noindex, follow" : CONFIG.seo.robots} />
@@ -139,11 +148,47 @@ const { baseFontSize } = CONFIG.typography;
         <div class="order-3 flex w-full items-center justify-between gap-3 text-xs text-muted-foreground sm:order-2 sm:w-auto sm:justify-start sm:gap-5 sm:text-sm">
           {DATA.navbar.map((item) => <a class="whitespace-nowrap transition-colors hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring" href={item.href}>{item.label}</a>)}
         </div>
-        <a href="/documents/cv.pdf" target="_blank" rel="noopener noreferrer" class="order-2 rounded-lg border border-border bg-card px-3 py-1.5 text-xs font-medium transition-colors hover:bg-accent sm:order-3 sm:text-sm">CV ↗</a>
+        <div class="order-2 flex items-center gap-2 sm:order-3">
+          <button
+            id="theme-toggle"
+            type="button"
+            aria-label="Switch to dark mode"
+            title="Switch to dark mode"
+            class="flex size-9 items-center justify-center rounded-lg border border-border bg-card text-muted-foreground shadow-sm transition-colors hover:bg-accent hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
+          >
+            <svg class="size-4 dark:hidden" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.7 13.1A9 9 0 0 1 10.9 3.3 9 9 0 1 0 20.7 13.1Z" /></svg>
+            <svg class="hidden size-4 dark:block" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4" /><path d="M12 2v2m0 16v2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M2 12h2m16 0h2M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42" /></svg>
+          </button>
+          <a href="/documents/cv.pdf" target="_blank" rel="noopener noreferrer" class="rounded-lg border border-border bg-card px-3 py-1.5 text-xs font-medium transition-colors hover:bg-accent sm:text-sm">CV ↗</a>
+        </div>
       </nav>
     </header>
     <div class="relative z-10 mx-auto max-w-2xl px-6 pb-24 pt-32 sm:pt-36">
       <slot />
     </div>
+    <script is:inline>
+      (() => {
+        const button = document.getElementById("theme-toggle");
+        const themeColor = document.querySelector('meta[name="theme-color"]');
+        const updateButton = () => {
+          const dark = document.documentElement.classList.contains("dark");
+          const label = `Switch to ${dark ? "light" : "dark"} mode`;
+          button?.setAttribute("aria-label", label);
+          button?.setAttribute("title", label);
+          themeColor?.setAttribute("content", dark ? "#292929" : "#fcfaf5");
+        };
+
+        button?.addEventListener("click", () => {
+          const dark = document.documentElement.classList.toggle("dark");
+          try {
+            localStorage.setItem("timothy-theme", dark ? "dark" : "light");
+          } catch {
+            // Keep the current page's selection even without storage.
+          }
+          updateButton();
+        });
+        updateButton();
+      })();
+    </script>
   </body>
 </html>
