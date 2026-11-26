@@ -45,11 +45,11 @@ export const DATA = {
     { href: "/#focus", label: "Focus" },
   ],
   contact: {
-    email: "timothy.pasaribu@mail.utoronto.ca",
+    email: "timothymarcellopasaribu@gmail.com",
     social: {
       GitHub: { name: "GitHub", url: "https://github.com/timothym4r", icon: Icons.github, navbar: true },
       LinkedIn: { name: "LinkedIn", url: "https://www.linkedin.com/in/timothy-pasaribu/", icon: Icons.linkedin, navbar: true },
-      Email: { name: "Email", url: "mailto:timothy.pasaribu@mail.utoronto.ca", icon: Icons.email, navbar: true },
+      Email: { name: "Email", url: "mailto:timothymarcellopasaribu@gmail.com", icon: Icons.email, navbar: true },
     },
   },
   work: [
